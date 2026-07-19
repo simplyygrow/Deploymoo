@@ -83,7 +83,7 @@ export function IntroAnimation({ onDone }: { onDone: () => void }) {
             return (
               <span
                 key={i}
-                className="font-sans font-bold text-text-heading leading-none select-none"
+                className="font-sans font-bold text-text-heading leading-none select-none no-theme-transition"
                 style={{
                   fontSize: `calc((100vw - 64px) / ${LETTERS.length})`,
                   letterSpacing: "0.05em",
@@ -92,6 +92,7 @@ export function IntroAnimation({ onDone }: { onDone: () => void }) {
                   transform: `translateY(${translateY}px)`,
                   transition,
                   willChange: "opacity, filter, transform",
+                  color: "var(--text-heading)",
                 }}
               >
                 {letter}

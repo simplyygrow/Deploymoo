@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useRef, useEffect, useState, useCallback } from "react"
-import { IntroAnimation, INTRO_DURATION_MS, HERO_REVEAL_MS } from "@/components/intro-animation"
+import { IntroAnimation, INTRO_DURATION_MS, HERO_REVEAL_MS } from "@/components/intro-animation"
 import { AgentInterface } from "@/components/agent-interface"
 import { PixelIcon } from "@/components/pixel-icon"
 import { LiveAgentFeed, LiveAgentCounter } from "@/components/live-agent-feed"
@@ -80,15 +80,24 @@ function Tag({ children }: { children: React.ReactNode }) {
 // ─── Main page ────────────────────────────────────────────────────────────────
 export default function AgenticPage() {
   const [heroReady, setHeroReady] = useState(false)
-  const [videoReady, setVideoReady] = useState(false)
+  const [videoZoomPhase, setVideoZoomPhase] = useState<"idle" | "zoomed" | "settled">("idle")
   const handleIntroDone = useCallback(() => {
     setHeroReady(true)
   }, [])
 
-  // Start video zoom slightly before hero content reveals, for seamless overlap
+  // Video zoom sequence: wait for curtain to fully retract, then zoom-out smoothly
   useEffect(() => {
-    const t = setTimeout(() => setVideoReady(true), HERO_REVEAL_MS)
-    return () => clearTimeout(t)
+    // Step 1: After the curtain is fully gone, set the video to its "zoomed in" starting position
+    const t1 = setTimeout(() => {
+      setVideoZoomPhase("zoomed")
+    }, INTRO_DURATION_MS)
+
+    // Step 2: One frame later, trigger the smooth zoom-out transition
+    const t2 = setTimeout(() => {
+      setVideoZoomPhase("settled")
+    }, INTRO_DURATION_MS + 50)
+
+    return () => { clearTimeout(t1); clearTimeout(t2) }
   }, [])
 
   const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -119,8 +128,8 @@ export default function AgenticPage() {
           className="absolute inset-0 w-full h-full object-cover z-0"
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/agentic-hero-9yW3wnTNMfn2U6lsVhTTZSJFEvAoSj.mp4"
           style={{
-            transform: videoReady ? "scale(1.05)" : "scale(0.85)",
-            transition: "transform 2s cubic-bezier(0.16, 1, 0.3, 1)",
+            transform: videoZoomPhase === "idle" ? "scale(1)" : videoZoomPhase === "zoomed" ? "scale(1.08)" : "scale(1)",
+            transition: videoZoomPhase === "settled" ? "transform 3s cubic-bezier(0.16, 1, 0.3, 1)" : "none",
           }}
         />
 

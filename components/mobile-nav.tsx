@@ -13,31 +13,9 @@ const NAV_LINKS = [
 export function MobileNav() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [theme, setTheme] = useState<"light" | "dark" | null>(null)
+  const themeToggleControl = null;
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const activeTheme = document.documentElement.classList.contains("dark") ? "dark" : "light"
-      setTheme(activeTheme)
-    }
-  }, [])
-
-  const toggleTheme = () => {
-    const isDark = document.documentElement.classList.toggle("dark")
-    const newTheme = isDark ? "dark" : "light"
-    setTheme(newTheme)
-    localStorage.setItem("theme", newTheme)
-  }
-
-  const close = () => setOpen(false)
+  const close = () => setOpen(false);
 
   const navContainerStyle = {
     backdropFilter: "blur(20px)",
@@ -50,30 +28,7 @@ export function MobileNav() {
     transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
   }
 
-  const themeToggleControl = theme !== null && (
-    <button
-      onClick={toggleTheme}
-      className="w-11 h-11 relative flex items-center justify-center rounded-full hover:bg-black/[0.04] dark:hover:bg-white/[0.04] text-text-heading border border-border-custom transition-all duration-300 cursor-pointer"
-      aria-label="Toggle theme"
-    >
-      {/* Sun Icon */}
-      <div className={`transition-all duration-300 transform ${theme === 'dark' ? 'rotate-90 opacity-0 scale-50' : 'rotate-0 opacity-100 scale-100'}`}>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="4"/>
-          <path d="M12 2v2"/><path d="M12 20v2"/>
-          <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
-          <path d="M2 12h2"/><path d="M20 12h2"/>
-          <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
-        </svg>
-      </div>
-      {/* Moon Icon */}
-      <div className={`absolute transition-all duration-300 transform ${theme === 'dark' ? 'rotate-0 opacity-100 scale-100' : '-rotate-90 opacity-0 scale-50'}`}>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-        </svg>
-      </div>
-    </button>
-  )
+
 
   return (
     <div className="fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
