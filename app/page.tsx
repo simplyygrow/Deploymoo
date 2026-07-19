@@ -80,24 +80,15 @@ function Tag({ children }: { children: React.ReactNode }) {
 // ─── Main page ────────────────────────────────────────────────────────────────
 export default function AgenticPage() {
   const [heroReady, setHeroReady] = useState(false)
-  const [videoZoomPhase, setVideoZoomPhase] = useState<"idle" | "zoomed" | "settled">("idle")
+  const [videoZoomDone, setVideoZoomDone] = useState(false)
   const handleIntroDone = useCallback(() => {
     setHeroReady(true)
   }, [])
 
-  // Video zoom sequence: wait for curtain to fully retract, then zoom-out smoothly
+  // Simple zoom-out: video starts scaled up, then smoothly settles to normal after intro ends
   useEffect(() => {
-    // Step 1: After the curtain is fully gone, set the video to its "zoomed in" starting position
-    const t1 = setTimeout(() => {
-      setVideoZoomPhase("zoomed")
-    }, INTRO_DURATION_MS)
-
-    // Step 2: One frame later, trigger the smooth zoom-out transition
-    const t2 = setTimeout(() => {
-      setVideoZoomPhase("settled")
-    }, INTRO_DURATION_MS + 50)
-
-    return () => { clearTimeout(t1); clearTimeout(t2) }
+    const t = setTimeout(() => setVideoZoomDone(true), INTRO_DURATION_MS + 100)
+    return () => clearTimeout(t)
   }, [])
 
   const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -128,8 +119,8 @@ export default function AgenticPage() {
           className="absolute inset-0 w-full h-full object-cover z-0"
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/agentic-hero-9yW3wnTNMfn2U6lsVhTTZSJFEvAoSj.mp4"
           style={{
-            transform: videoZoomPhase === "idle" ? "scale(1)" : videoZoomPhase === "zoomed" ? "scale(1.08)" : "scale(1)",
-            transition: videoZoomPhase === "settled" ? "transform 3s cubic-bezier(0.16, 1, 0.3, 1)" : "none",
+            transform: videoZoomDone ? "scale(1)" : "scale(1.1)",
+            transition: videoZoomDone ? "transform 4s cubic-bezier(0.25, 0.46, 0.45, 0.94)" : "none",
           }}
         />
 
