@@ -223,34 +223,34 @@ export default function AgenticPage() {
 
             {/* Bottom row */}
             <BentoCard className="col-span-12 md:col-span-4 p-6 md:p-8 min-h-[200px]" delay={120}>
-              <div className="w-10 h-10 rounded-xl border border-black/10 flex items-center justify-center mb-5">
+              <div className="w-10 h-10 rounded-xl border border-border-custom flex items-center justify-center mb-5">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
               </div>
-              <h3 className="text-lg font-light mb-2">Rapid Team Deployment</h3>
-              <p className="text-sm text-black/45 leading-relaxed">Support for time-sensitive, short-term field requirements, subject to location and team availability.</p>
+              <h3 className="text-lg font-light mb-2 text-text-heading">Rapid Team Deployment</h3>
+              <p className="text-sm text-text-body/70 leading-relaxed">Support for time-sensitive, short-term field requirements, subject to location and team availability.</p>
             </BentoCard>
 
             <BentoCard className="col-span-12 md:col-span-4 p-6 md:p-8 min-h-[200px]" delay={160}>
-              <div className="w-10 h-10 rounded-xl border border-black/10 flex items-center justify-center mb-5">
+              <div className="w-10 h-10 rounded-xl border border-border-custom flex items-center justify-center mb-5">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10h8M8 14h5"/></svg>
               </div>
-              <h3 className="text-lg font-light mb-2">Multi-Location Execution</h3>
-              <p className="text-sm text-black/45 leading-relaxed">One field execution partner for supported locations and multi-city projects across major hubs.</p>
+              <h3 className="text-lg font-light mb-2 text-text-heading">Multi-Location Execution</h3>
+              <p className="text-sm text-text-body/70 leading-relaxed">One field execution partner for supported locations and multi-city projects across major hubs.</p>
             </BentoCard>
 
             <BentoCard className="col-span-12 md:col-span-4 p-6 md:p-8 min-h-[200px]" delay={200}>
-              <div className="w-10 h-10 rounded-xl border border-black/10 flex items-center justify-center mb-5">
+              <div className="w-10 h-10 rounded-xl border border-border-custom flex items-center justify-center mb-5">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               </div>
-              <h3 className="text-lg font-light mb-2">Project-Based Workforce</h3>
-              <p className="text-sm text-black/45 leading-relaxed">Specialized teams mapped uniquely for campaign, event, audit, survey and temporary field projects.</p>
+              <h3 className="text-lg font-light mb-2 text-text-heading">Project-Based Workforce</h3>
+              <p className="text-sm text-text-body/70 leading-relaxed">Specialized teams mapped uniquely for campaign, event, audit, survey and temporary field projects.</p>
             </BentoCard>
           </div>
         </div>
       </section>
 
       {/* ── BUILD YOUR AGENTS (4 cards) ───────────────────────────────────── */}
-      <section id="agents" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      <section id="agents" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
             <div>
@@ -260,7 +260,7 @@ export default function AgenticPage() {
                 {"Plug-and-play agents\nready to deploy."}
               </RevealText>
             </div>
-            <p className="text-sm text-black/45 leading-relaxed max-w-xs">
+            <p className="text-sm text-text-body/70 leading-relaxed max-w-xs">
               Start with a pre-built agent or compose your own from primitives. Every agent is versioned, testable, and observable.
             </p>
           </div>
@@ -270,7 +270,7 @@ export default function AgenticPage() {
       </section>
 
       {/* ── HOW IT WORKS ──────────────────────────────────────────────────── */}
-      <section id="workflow" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-black/[0.06] overflow-hidden">
+      <section id="workflow" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <PixelIcon type="workflow" size={40} />
@@ -302,12 +302,12 @@ export default function AgenticPage() {
                 </div>
                 {/* Number top-left */}
                 <div className="relative z-10 p-5 md:p-7">
-                  <span className="font-pixel text-[11px] text-black/20 tracking-widest block">{step.n}</span>
+                  <span className="font-pixel text-[11px] text-text-muted/40 tracking-widest block">{step.n}</span>
                 </div>
                 {/* Text pushed further down */}
                 <div className="relative z-10 px-5 pb-5 md:px-7 md:pb-7 mt-auto pt-16">
-                  <h3 className="text-2xl font-light mb-3">{step.title}</h3>
-                  <p className="text-sm text-black/45 leading-relaxed">{step.desc}</p>
+                  <h3 className="text-2xl font-light mb-3 text-text-heading">{step.title}</h3>
+                  <p className="text-sm text-text-body/70 leading-relaxed">{step.desc}</p>
                 </div>
               </BentoCard>
             ))}
@@ -316,7 +316,7 @@ export default function AgenticPage() {
       </section>
 
       {/* ── INTEGRATIONS ──────────────────────────────────────────────────── */}
-      <section id="integrations" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      <section id="integrations" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
             <div>
@@ -326,14 +326,14 @@ export default function AgenticPage() {
                 {"Connect any tool.\nControl any system."}
               </RevealText>
             </div>
-            <p className="text-sm text-black/45 leading-relaxed max-w-xs">
+            <p className="text-sm text-text-body/70 leading-relaxed max-w-xs">
               200+ native connectors. Everything from Slack to your internal database. Build custom tools with our SDK in minutes.
             </p>
           </div>
 
           {/* Full-width image block with glass cards */}
           {/* Mobile: flex-col, image + cards stacked. Desktop: image fills block, cards absolute */}
-          <div className="rounded-2xl overflow-hidden border border-black/[0.07] flex flex-col md:block md:relative" onMouseMove={handleMouse}>
+          <div className="rounded-2xl overflow-hidden border border-border-custom flex flex-col md:block md:relative" onMouseMove={handleMouse}>
             {/* Image */}
             <div className="relative w-full h-[280px] md:h-[480px] shrink-0">
               <img
@@ -345,40 +345,26 @@ export default function AgenticPage() {
 
             {/* Cards — flex row on mobile (equal spacing), absolute on desktop */}
             <div className="flex flex-col gap-3 p-4 md:absolute md:bottom-4 md:right-4 md:p-0 md:w-72">
-              <div
-                className="rounded-xl border border-white/50 p-6"
-                style={{
-                  backdropFilter: "blur(24px)",
-                  WebkitBackdropFilter: "blur(24px)",
-                  background: "rgba(255,255,255,0.60)",
-                }}
-              >
+              <div className="rounded-xl border border-border-custom p-6 bg-white/60 dark:bg-black/60 backdrop-blur-md">
                 <Tag>SDK</Tag>
-                <h3 className="mt-3 text-lg font-light mb-2">Build custom tools</h3>
-                <p className="text-xs text-black/45 leading-relaxed mb-4">Define any function as a tool your agents can call. TypeScript and Python.</p>
-                <div className="bg-black/[0.05] rounded-lg border border-black/[0.07] p-3 font-mono text-[11px] text-black/50 leading-relaxed">
-                  <span className="text-black/25">// tool definition</span><br />
-                  <span className="text-blue-600/70">defineTool</span>{"({"}<br />
-                  {"  "}<span className="text-amber-700/70">name</span>: <span className="text-green-700/70">&apos;fetchPrice&apos;</span>,<br />
-                  {"  "}<span className="text-amber-700/70">run</span>: <span className="text-black/35">async (q) </span>={">"}<br />
-                  {"    "}<span className="text-blue-600/70">api</span>.get(q)<br />
+                <h3 className="mt-3 text-lg font-light mb-2 text-text-heading">Build custom tools</h3>
+                <p className="text-xs text-text-body/70 leading-relaxed mb-4">Define any function as a tool your agents can call. TypeScript and Python.</p>
+                <div className="bg-text-body/5 rounded-lg border border-border-custom p-3 font-mono text-[11px] text-text-body/70 leading-relaxed">
+                  <span className="text-text-muted/65">// tool definition</span><br />
+                  <span className="text-blue-500 font-medium">defineTool</span>{"({"}<br />
+                  {"  "}<span className="text-amber-600 dark:text-amber-500">name</span>: <span className="text-emerald-600 dark:text-emerald-500">&apos;fetchPrice&apos;</span>,<br />
+                  {"  "}<span className="text-amber-600 dark:text-amber-500">run</span>: <span className="text-text-body/60">async (q) </span>={">"}<br />
+                  {"    "}<span className="text-blue-500">api</span>.get(q)<br />
                   {"})"}
                 </div>
               </div>
 
-              <div
-                className="rounded-xl border border-white/50 p-6"
-                style={{
-                  backdropFilter: "blur(24px)",
-                  WebkitBackdropFilter: "blur(24px)",
-                  background: "rgba(255,255,255,0.60)",
-                }}
-              >
+              <div className="rounded-xl border border-border-custom p-6 bg-white/60 dark:bg-black/60 backdrop-blur-md">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-2 h-2 rounded-full bg-emerald-500/80 animate-pulse" />
-                  <span className="text-xs text-black/40 tracking-widest">LIVE API</span>
+                  <span className="text-xs text-text-muted tracking-widest">LIVE API</span>
                 </div>
-                <p className="text-sm text-black/45">Full REST + WebSocket API. Stream agent outputs directly into your product.</p>
+                <p className="text-sm text-text-body/70">Full REST + WebSocket API. Stream agent outputs directly into your product.</p>
               </div>
             </div>
           </div>
@@ -386,7 +372,7 @@ export default function AgenticPage() {
       </section>
 
       {/* ── SECURITY & OBSERVABILITY ──────────────────────────────────��──── */}
-      <section id="security" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      <section id="security" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <PixelIcon type="platform" size={40} />
@@ -400,7 +386,7 @@ export default function AgenticPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Left side — descriptions */}
             <div className="space-y-6">
-              <p className="text-sm text-black/45 leading-relaxed">
+              <p className="text-sm text-text-body/70 leading-relaxed">
                 Every action is logged, every decision is traceable. Built for teams that need compliance without compromise.
               </p>
 
@@ -411,10 +397,10 @@ export default function AgenticPage() {
                   { label: "Real-time Observability", desc: "Monitor, debug, and replay any execution" },
                 ].map((item) => (
                   <div key={item.label} className="flex gap-4">
-                    <div className="w-1 bg-black/10 rounded-full shrink-0" />
+                    <div className="w-1 bg-border-custom rounded-full shrink-0" />
                     <div>
-                      <h3 className="text-sm font-light mb-1">{item.label}</h3>
-                      <p className="text-xs text-black/35">{item.desc}</p>
+                      <h3 className="text-sm font-light mb-1 text-text-heading">{item.label}</h3>
+                      <p className="text-xs text-text-muted">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -423,8 +409,8 @@ export default function AgenticPage() {
               {/* Compliance badges — vertical stack */}
               <div className="pt-4 flex flex-col gap-2">
                 {["SOC 2", "GDPR", "HIPAA Ready", "ISO 27001"].map((badge) => (
-                  <div key={badge} className="flex items-center gap-2 text-xs text-black/25">
-                    <span className="w-1 h-1 rounded-full bg-black/25" />
+                  <div key={badge} className="flex items-center gap-2 text-xs text-text-muted/65">
+                    <span className="w-1 h-1 rounded-full bg-text-muted/65" />
                     {badge}
                   </div>
                 ))}
@@ -433,7 +419,7 @@ export default function AgenticPage() {
 
             {/* Right side — live audit log visualization */}
             <BentoCard className="p-6 lg:row-span-1" delay={0}>
-              <div className="text-xs text-black/30 tracking-widest uppercase mb-4">Live Audit Trail</div>
+              <div className="text-xs text-text-muted tracking-widest uppercase mb-4">Live Audit Trail</div>
               <div className="space-y-2">
                 {[
                   { time: "12:34:21", action: "agent_executed", status: "success" },
@@ -444,13 +430,13 @@ export default function AgenticPage() {
                 ].map((log, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-black/[0.02] hover:bg-black/[0.04] transition-colors border border-black/[0.04] group cursor-pointer"
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-text-body/[0.02] hover:bg-text-body/[0.05] transition-colors border border-border-custom group cursor-pointer"
                     style={{
                       animation: `fadeInUp 0.5s cubic-bezier(0.16,1,0.3,1) ${i * 80}ms both`,
                     }}
                   >
-                    <span className="text-[10px] text-black/25 font-mono min-w-[60px]">{log.time}</span>
-                    <span className="text-[11px] text-black/50 font-light flex-1">{log.action}</span>
+                    <span className="text-[10px] text-text-muted/65 font-mono min-w-[60px]">{log.time}</span>
+                    <span className="text-[11px] text-text-body/70 font-light flex-1">{log.action}</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-green-500/60 group-hover:bg-green-500 transition-colors" />
                   </div>
                 ))}
@@ -567,26 +553,26 @@ export default function AgenticPage() {
                 <div className="mb-8">
                   <div className="font-pixel text-[11px] tracking-widest text-text-muted mb-4">{plan.name}</div>
                   <div className="flex items-baseline gap-1 mb-1">
-                    <span className="text-4xl font-light">{plan.price}</span>
-                    {plan.period && <span className="text-black/40 text-sm">{plan.period}</span>}
+                    <span className="text-4xl font-light text-text-heading">{plan.price}</span>
+                    {plan.period && <span className="text-text-muted text-sm">{plan.period}</span>}
                   </div>
-                  <p className="text-xs text-black/35 tracking-wide">{plan.sub}</p>
+                  <p className="text-xs text-text-muted tracking-wide">{plan.sub}</p>
                 </div>
                 <ul className="space-y-3 flex-1 mb-8">
                   {plan.features.map(f => (
-                    <li key={f} className="flex items-center gap-3 text-sm text-black/55">
-                      <div className="w-1 h-1 rounded-full bg-black/25 shrink-0" />
+                    <li key={f} className="flex items-center gap-3 text-sm text-text-body/80">
+                      <div className="w-1 h-1 rounded-full bg-text-muted/30 shrink-0" />
                       {f}
                     </li>
                   ))}
                 </ul>
                 <button className={`w-full py-3.5 rounded-xl text-sm tracking-widest transition-all duration-200 ${
-                plan.highlight
-                  ? "bg-[#111] text-white hover:bg-[#333]"
-                  : "border border-black/10 text-black/60 hover:border-black/25 hover:text-black hover:bg-black/[0.04]"
-              }`}>
-                {plan.name === "Enterprise" ? "CONTACT SALES" : "GET STARTED"}
-              </button>
+                  plan.highlight
+                    ? "bg-text-heading text-bg-page hover:opacity-90 cursor-pointer"
+                    : "border border-border-custom text-text-body/70 hover:border-text-heading/30 hover:text-text-heading hover:bg-text-body/[0.04] cursor-pointer"
+                }`}>
+                  {plan.name === "Enterprise" ? "CONTACT SALES" : "GET STARTED"}
+                </button>
               </BentoCard>
             ))}
           </div>
