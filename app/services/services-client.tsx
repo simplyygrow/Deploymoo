@@ -26,15 +26,15 @@ function BentoCard({ children, className = "", delay = 0, onMouseMove }: any) {
     <div
       ref={ref}
       onMouseMove={onMouseMove}
-      className={`group relative rounded-2xl border border-black/[0.07] bg-white overflow-hidden transition-all duration-700 hover:border-black/[0.15] hover:bg-[#fafaf8] ${className}`}
+      className={`group relative rounded-2xl border border-border-custom bg-bg-card overflow-hidden transition-all duration-700 hover:border-text-heading/15 hover:bg-bg-page/50 ${className}`}
       style={{
         opacity: inView ? 1 : 0,
         transform: inView ? "translateY(0)" : "translateY(28px)",
         transition: `opacity 0.7s ease ${delay}ms, transform 0.7s ease ${delay}ms, border-color 0.3s ease, background-color 0.3s ease`,
       }}
     >
-      <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{ background: "radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0,0,0,0.03), transparent 60%)" }}
+      <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500"
+        style={{ background: "radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--text-heading), transparent 60%)" }}
       />
       {children}
     </div>
@@ -43,7 +43,7 @@ function BentoCard({ children, className = "", delay = 0, onMouseMove }: any) {
 
 function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] tracking-widest font-sans text-black/40 bg-black/[0.04]">
+    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] tracking-widest font-sans text-text-muted bg-text-body/5">
       {children}
     </span>
   )
@@ -110,37 +110,37 @@ export default function ServicesClient() {
   ];
 
   return (
-    <div className="bg-[#F5F4F0] text-[#111] min-h-screen font-sans antialiased">
+    <div className="bg-bg-page text-text-body min-h-screen font-sans antialiased">
       <MobileNav />
 
       {/* Hero Section Spacer */}
       <div className="pt-40 pb-16 px-6 md:px-12 lg:px-20 max-w-6xl mx-auto">
         <Tag>SERVICES</Tag>
-        <RevealText className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
+        <RevealText className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] text-text-heading">
           {"Our Field Execution Services"}
         </RevealText>
       </div>
 
       {/* Services Grid */}
-      <section className="py-12 px-6 md:py-16 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      <section className="py-12 px-6 md:py-16 md:px-12 lg:px-20 border-t border-border-custom">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" onMouseMove={handleMouse}>
           {services.map((svc, i) => (
             <BentoCard key={i} className="p-6 md:p-8 flex flex-col h-full" delay={i * 80}>
-              <h3 className="text-xl font-light mb-3">{svc.title}</h3>
-              <p className="text-sm text-black/45 leading-relaxed mb-6">{svc.desc}</p>
+              <h3 className="text-xl font-light mb-3 text-text-heading">{svc.title}</h3>
+              <p className="text-sm text-text-body/75 leading-relaxed mb-6">{svc.desc}</p>
               
               <div className="mt-auto">
-                <div className="text-xs text-black/30 tracking-widest uppercase mb-3">WHAT'S INCLUDED</div>
+                <div className="text-xs text-text-muted tracking-widest uppercase mb-3">WHAT'S INCLUDED</div>
                 <ul className="space-y-3 mb-8">
                   {svc.included.map((item, j) => (
-                    <li key={j} className="flex items-start gap-3 text-sm text-black/55">
-                      <div className="w-1.5 h-1.5 rounded-full bg-black/25 mt-1.5 shrink-0" />
+                    <li key={j} className="flex items-start gap-3 text-sm text-text-body/80">
+                      <div className="w-1.5 h-1.5 rounded-full bg-text-muted/40 mt-1.5 shrink-0" />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <div className="pt-5 border-t border-black/[0.06]">
-                  <p className="text-xs text-black/45 font-medium"><span className="text-black/30 tracking-widest uppercase text-[10px] mr-2">FOR</span> {svc.who}</p>
+                <div className="pt-5 border-t border-border-custom">
+                  <p className="text-xs text-text-body/70 font-medium"><span className="text-text-muted tracking-widest uppercase text-[10px] mr-2">FOR</span> {svc.who}</p>
                 </div>
               </div>
             </BentoCard>
@@ -149,11 +149,11 @@ export default function ServicesClient() {
       </section>
 
       {/* FAQ Accordion */}
-      <section className="py-16 px-6 md:py-24 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      <section className="py-16 px-6 md:py-24 md:px-12 lg:px-20 border-t border-border-custom">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 flex flex-col items-center">
             <Tag>FAQ</Tag>
-            <h2 className="mt-5 text-2xl md:text-4xl font-light tracking-tight leading-[1.05]">Frequently Asked Questions</h2>
+            <h2 className="mt-5 text-2xl md:text-4xl font-light tracking-tight leading-[1.05] text-text-heading">Frequently Asked Questions</h2>
           </div>
           
           <div className="space-y-4" onMouseMove={handleMouse}>
@@ -161,10 +161,10 @@ export default function ServicesClient() {
               <BentoCard key={i} className="" delay={i * 50}>
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full relative z-10 px-6 py-5 flex items-center justify-between text-left"
+                  className="w-full relative z-10 px-6 py-5 flex items-center justify-between text-left cursor-pointer"
                 >
-                  <span className="text-lg font-light pr-4">{faq.q}</span>
-                  <div className="w-8 h-8 rounded-full border border-black/10 flex flex-shrink-0 items-center justify-center transition-transform duration-300" style={{ transform: openFaq === i ? 'rotate(180deg)' : 'none' }}>
+                  <span className="text-lg font-light pr-4 text-text-heading">{faq.q}</span>
+                  <div className="w-8 h-8 rounded-full border border-border-custom flex flex-shrink-0 items-center justify-center transition-transform duration-300" style={{ transform: openFaq === i ? 'rotate(180deg)' : 'none' }}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M6 9l6 6 6-6"/></svg>
                   </div>
                 </button>
@@ -172,7 +172,7 @@ export default function ServicesClient() {
                   className="px-6 overflow-hidden transition-all duration-500 ease-in-out relative z-10"
                   style={{ maxHeight: openFaq === i ? '200px' : '0px', opacity: openFaq === i ? 1 : 0, paddingBottom: openFaq === i ? '1.5rem' : '0' }}
                 >
-                  <p className="text-sm text-black/55 leading-relaxed">{faq.a}</p>
+                  <p className="text-sm text-text-body/85 leading-relaxed">{faq.a}</p>
                 </div>
               </BentoCard>
             ))}

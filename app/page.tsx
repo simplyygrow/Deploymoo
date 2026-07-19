@@ -52,7 +52,7 @@ function BentoCard({ children, className = "", delay = 0 }: { children: React.Re
   return (
     <div
       ref={ref}
-      className={`group relative rounded-2xl border border-black/[0.07] bg-white overflow-hidden transition-all duration-700 hover:border-black/[0.15] hover:bg-[#fafaf8] ${className}`}
+      className={`group relative rounded-2xl border border-border-custom bg-bg-card overflow-hidden transition-all duration-700 hover:border-text-heading/15 hover:bg-bg-page/50 ${className}`}
       style={{
         opacity: inView ? 1 : 0,
         transform: inView ? "translateY(0)" : "translateY(28px)",
@@ -71,7 +71,7 @@ function BentoCard({ children, className = "", delay = 0 }: { children: React.Re
 // ─── Pill tag ─────────────────────────────────────────────────────────────────
 function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] tracking-widest font-sans text-black/40 bg-black/[0.04]">
+    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] tracking-widest font-sans text-text-muted bg-text-body/5">
       {children}
     </span>
   )
@@ -99,7 +99,7 @@ export default function AgenticPage() {
   }
 
   return (
-    <div className="bg-[#F5F4F0] text-[#111] min-h-screen font-sans antialiased">
+    <div className="bg-bg-page text-text-body min-h-screen font-sans antialiased">
 
       {/* ── INTRO ANIMATION ───────────────────────────────────────────────── */}
       <IntroAnimation onDone={handleIntroDone} />
@@ -127,7 +127,7 @@ export default function AgenticPage() {
 
 
         {/* Progressive blur + light gradient rising from bottom */}
-        <div className="absolute inset-x-0 bottom-0 z-10 pointer-events-none" style={{ height: "65%", background: "linear-gradient(to top, #F5F4F0 0%, #F5F4F0 18%, rgba(245,244,240,0.85) 35%, rgba(245,244,240,0.5) 55%, rgba(245,244,240,0.15) 75%, transparent 100%)" }} />
+        <div className="absolute inset-x-0 bottom-0 z-10 pointer-events-none hero-rising-gradient" style={{ height: "65%" }} />
         {/* Backdrop blur layers — progressively lighter toward top */}
         <div className="absolute inset-x-0 bottom-0 z-10 pointer-events-none" style={{ height: "20%", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", maskImage: "linear-gradient(to top, black 0%, transparent 100%)", WebkitMaskImage: "linear-gradient(to top, black 0%, transparent 100%)" }} />
         <div className="absolute inset-x-0 bottom-0 z-10 pointer-events-none" style={{ height: "38%", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)", maskImage: "linear-gradient(to top, black 0%, transparent 100%)", WebkitMaskImage: "linear-gradient(to top, black 0%, transparent 100%)" }} />
@@ -140,7 +140,7 @@ export default function AgenticPage() {
         <div className="absolute inset-x-0 bottom-0 z-30 flex flex-col px-6 md:px-12 pb-12 max-w-3xl">
           {/* Title */}
           <h1
-            className="text-4xl sm:text-6xl md:text-8xl font-light text-[#111] leading-[1.0] tracking-tight mb-10"
+            className="text-4xl sm:text-6xl md:text-8xl font-light text-text-heading leading-[1.0] tracking-tight mb-10"
             style={{
               fontFamily: '"IBM Plex Sans", sans-serif',
               opacity: heroReady ? 1 : 0,
@@ -168,8 +168,8 @@ export default function AgenticPage() {
                   transition: `opacity 0.8s cubic-bezier(0.16,1,0.3,1) ${120 + i * 80}ms, filter 0.8s cubic-bezier(0.16,1,0.3,1) ${120 + i * 80}ms, transform 0.8s cubic-bezier(0.16,1,0.3,1) ${120 + i * 80}ms`,
                 }}
               >
-                <div className="text-3xl sm:text-4xl text-[#111] font-light tracking-tight" style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>{stat.value}</div>
-                <div className="text-xs text-black/40 tracking-widest uppercase mt-1" style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>{stat.label}</div>
+                <div className="text-3xl sm:text-4xl text-text-heading font-light tracking-tight" style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>{stat.value}</div>
+                <div className="text-xs text-text-muted tracking-widest uppercase mt-1" style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>{stat.label}</div>
               </div>
             ))}
           </div>
@@ -207,18 +207,15 @@ export default function AgenticPage() {
               }} />
               {/* Fade-to-background gradient — matches site bg color #f5f4f0 */}
               <div
-                className="absolute inset-0"
-                style={{
-                  background: "linear-gradient(to bottom, transparent 35%, rgba(245,244,240,0.3) 50%, rgba(245,244,240,0.75) 65%, rgba(245,244,240,0.95) 80%, rgb(245,244,240) 100%)",
-                }}
+                className="absolute inset-0 bento-fade-gradient"
               />
               {/* Content */}
               <div className="relative z-10">
-                <div className="w-10 h-10 rounded-xl border border-black/10 bg-white/60 flex items-center justify-center mb-6" style={{ backdropFilter: "blur(8px)" }}>
+                <div className="w-10 h-10 rounded-xl border border-border-custom bg-bg-card/60 flex items-center justify-center mb-6" style={{ backdropFilter: "blur(8px)" }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><path d="m4.93 4.93 2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg>
                 </div>
-                <h3 className="text-xl font-light mb-3">Managed On-Ground Teams</h3>
-                <p className="text-sm text-black/45 leading-relaxed max-w-sm">
+                <h3 className="text-xl font-light mb-3 text-text-heading">Managed On-Ground Teams</h3>
+                <p className="text-sm text-text-body/70 leading-relaxed max-w-sm">
                   Project-based field teams coordinated according to client requirements. No boilerplate hiring, just executed projects.
                 </p>
               </div>
@@ -473,14 +470,14 @@ export default function AgenticPage() {
       <DevExSection />
 
       {/* ── MARQUEE CAPABILITIES ──────────────────────────────────────────── */}
-      <section className="py-0 border-t border-black/[0.06] overflow-hidden select-none">
-        <div className="flex border-b border-black/[0.06]" style={{ animation: "marqueeLeft 28s linear infinite" }}>
+      <section className="py-0 border-t border-border-custom overflow-hidden select-none">
+        <div className="flex border-b border-border-custom" style={{ animation: "marqueeLeft 28s linear infinite" }}>
           {[...Array(3)].map((_, rep) => (
             <div key={rep} className="flex shrink-0">
               {["Web Research", "Code Generation", "Email Drafting", "Data Analysis", "PR Reviews", "Scheduling", "SQL Queries", "API Calls", "File Processing", "Monitoring"].map((cap) => (
-                <div key={cap} className="flex items-center gap-6 px-10 py-5 border-r border-black/[0.06] shrink-0">
-                  <span className="w-1.5 h-1.5 rounded-full bg-black/20 shrink-0" />
-                  <span className="text-sm text-black/45 whitespace-nowrap tracking-wide">{cap}</span>
+                <div key={cap} className="flex items-center gap-6 px-10 py-5 border-r border-border-custom shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-text-muted/40 shrink-0" />
+                  <span className="text-sm text-text-body/75 whitespace-nowrap tracking-wide">{cap}</span>
                 </div>
               ))}
             </div>
@@ -490,9 +487,9 @@ export default function AgenticPage() {
           {[...Array(3)].map((_, rep) => (
             <div key={rep} className="flex shrink-0">
               {["Report Writing", "Slack Summaries", "Lead Scoring", "Image Tagging", "Test Running", "Deployment", "Log Parsing", "Invoice Processing", "Meeting Notes", "Sentiment Analysis"].map((cap) => (
-                <div key={cap} className="flex items-center gap-6 px-10 py-5 border-r border-black/[0.06] shrink-0">
-                  <span className="w-1.5 h-1.5 rounded-full bg-black/12 shrink-0" />
-                  <span className="text-sm text-black/30 whitespace-nowrap tracking-wide">{cap}</span>
+                <div key={cap} className="flex items-center gap-6 px-10 py-5 border-r border-border-custom shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-text-muted/20 shrink-0" />
+                  <span className="text-sm text-text-body/50 whitespace-nowrap tracking-wide">{cap}</span>
                 </div>
               ))}
             </div>
@@ -500,8 +497,8 @@ export default function AgenticPage() {
         </div>
       </section>
 
-      {/* ── LIVE AGENTS ��──────────────────────────────────────────────────── */}
-      <section id="live" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      {/* ── LIVE AGENTS ──────────────────────────────────────────────────── */}
+      <section id="live" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
@@ -510,12 +507,12 @@ export default function AgenticPage() {
               <RevealText className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
                 {"Agents working\n24 / 7, autonomously."}
               </RevealText>
-              <p className="mt-6 text-base text-black/40 leading-relaxed max-w-sm">
+              <p className="mt-6 text-base text-text-body/70 leading-relaxed max-w-sm">
                 At any moment, thousands of agents are running tasks on behalf of teams around the world — no human in the loop.
               </p>
               <div className="mt-10 flex items-end gap-2">
                 <LiveAgentCounter />
-                <span className="text-black/30 text-sm mb-1 tracking-wide">agents active globally</span>
+                <span className="text-text-muted text-sm mb-1 tracking-wide">agents active globally</span>
               </div>
             </div>
             <div className="relative">
@@ -525,8 +522,8 @@ export default function AgenticPage() {
         </div>
       </section>
 
-      {/* ── PRICING ───────────────────────────────────���────������─────────────── */}
-      <section id="pricing" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      {/* ── PRICING ──────────────────────────────────────────────────────── */}
+      <section id="pricing" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12 flex flex-col items-center">
             <PixelIcon type="pricing" size={40} />
@@ -564,11 +561,11 @@ export default function AgenticPage() {
             ].map((plan) => (
               <BentoCard
                 key={plan.name}
-                className={`p-8 flex flex-col ${plan.highlight ? "border-black/20 bg-[#F0EEE8]" : ""}`}
+                className={`p-8 flex flex-col ${plan.highlight ? "border-text-heading/30 bg-[#F0EEE8] dark:bg-bg-card" : ""}`}
                 delay={plan.delay}
               >
                 <div className="mb-8">
-                  <div className="font-pixel text-[11px] tracking-widest text-black/40 mb-4">{plan.name}</div>
+                  <div className="font-pixel text-[11px] tracking-widest text-text-muted mb-4">{plan.name}</div>
                   <div className="flex items-baseline gap-1 mb-1">
                     <span className="text-4xl font-light">{plan.price}</span>
                     {plan.period && <span className="text-black/40 text-sm">{plan.period}</span>}

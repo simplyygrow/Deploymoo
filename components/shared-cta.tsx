@@ -8,14 +8,13 @@ export function SharedCta({ actionType = 'email' }: { actionType?: 'email' | 'co
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section className="relative py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-black/[0.06] overflow-hidden">
+    <section className="relative py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom overflow-hidden">
       {/* Glass panels image — anchored to bottom center */}
       <img
         src="/images/footer.png"
         alt=""
         aria-hidden="true"
-        className="absolute bottom-0 left-0 w-full object-cover object-bottom pointer-events-none select-none"
-        style={{ opacity: 0.85 }}
+        className="absolute bottom-0 left-0 w-full object-cover object-bottom pointer-events-none select-none opacity-85 dark:opacity-50"
       />
       {/* Progressive blur from bottom — blends into site bg */}
       <div
@@ -27,18 +26,15 @@ export function SharedCta({ actionType = 'email' }: { actionType?: 'email' | 'co
           WebkitBackdropFilter: "blur(18px)",
         }}
       />
-      {/* Colour fade from bottom to site bg #f5f4f0 */}
+      {/* Colour fade from bottom to site bg via CSS theme class */}
       <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "linear-gradient(to top, rgb(245,244,240) 0%, rgba(245,244,240,0.92) 18%, rgba(245,244,240,0.55) 35%, transparent 55%)",
-        }}
+        className="absolute inset-0 pointer-events-none cta-fade-gradient"
       />
       <div className="relative z-10 max-w-2xl mx-auto text-center">
-        <h2 className="text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] mb-6">
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] mb-6 text-text-heading">
           Deploy Teams. Execute On-Ground. Scale Faster.
         </h2>
-        <p className="text-sm text-black/45 leading-relaxed mb-10">
+        <p className="text-sm text-text-body/75 leading-relaxed mb-10">
           Deploymo provides managed on-ground teams and field execution services for brands, marketing agencies, event companies, research firms and businesses across Mumbai and supported major cities in India.
         </p>
 
@@ -54,17 +50,17 @@ export function SharedCta({ actionType = 'email' }: { actionType?: 'email' | 'co
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 required
-                className="flex-1 bg-white border border-black/10 rounded-xl px-4 py-3 text-sm text-[#111] placeholder:text-black/25 focus:outline-none focus:border-black/25 transition-colors"
+                className="flex-1 bg-bg-card border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors"
               />
               <button
                 type="submit"
-                className="px-8 py-3.5 bg-[#111] text-white text-sm rounded-xl hover:bg-[#333] transition-colors tracking-widest font-medium"
+                className="px-8 py-3.5 bg-text-heading text-bg-page text-sm rounded-xl hover:opacity-90 transition-colors tracking-widest font-medium cursor-pointer"
               >
                 JOIN
               </button>
             </form>
           ) : (
-            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-emerald-600/20 bg-emerald-50 text-emerald-700 text-sm">
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-emerald-600/20 bg-emerald-500/10 text-emerald-500 text-sm">
               <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               {"You're on the list. We'll be in touch."}
             </div>
@@ -73,7 +69,7 @@ export function SharedCta({ actionType = 'email' }: { actionType?: 'email' | 'co
           <div className="max-w-md mx-auto flex justify-center">
             <Link
               href="/contact"
-              className="px-8 py-3.5 bg-[#111] text-white text-sm rounded-xl hover:bg-[#333] transition-colors tracking-widest font-medium"
+              className="px-8 py-3.5 bg-text-heading text-bg-page text-sm rounded-xl hover:opacity-90 transition-colors tracking-widest font-medium cursor-pointer"
             >
               REQUEST QUOTE
             </Link>
