@@ -140,7 +140,7 @@ export default function AgenticPage() {
         <div className="absolute inset-x-0 bottom-0 z-30 flex flex-col px-6 md:px-12 pb-12 max-w-3xl">
           {/* Title */}
           <h1
-            className="text-6xl sm:text-7xl md:text-8xl font-light text-[#111] leading-[1.0] tracking-tight mb-10"
+            className="text-4xl sm:text-6xl md:text-8xl font-light text-[#111] leading-[1.0] tracking-tight mb-10"
             style={{
               fontFamily: '"IBM Plex Sans", sans-serif',
               opacity: heroReady ? 1 : 0,
@@ -177,12 +177,12 @@ export default function AgenticPage() {
       </section>
 
       {/* ── PLATFORM OVERVIEW (bento) ──────────────────────────────────────── */}
-      <section id="platform" className="py-32 px-6 md:px-12 lg:px-20">
+      <section id="platform" className="py-16 px-6 md:py-32 md:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto">
           <div className="mb-16">
             <PixelIcon type="platform" size={40} />
             <div className="mt-4"><Tag>WHY DEPLOYMO</Tag></div>
-            <RevealText className="mt-5 text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
+            <RevealText className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
               {"Everything you need\nfor field execution."}
             </RevealText>
           </div>
@@ -225,7 +225,7 @@ export default function AgenticPage() {
             </BentoCard>
 
             {/* Bottom row */}
-            <BentoCard className="col-span-12 md:col-span-4 p-8 min-h-[200px]" delay={120}>
+            <BentoCard className="col-span-12 md:col-span-4 p-6 md:p-8 min-h-[200px]" delay={120}>
               <div className="w-10 h-10 rounded-xl border border-black/10 flex items-center justify-center mb-5">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
               </div>
@@ -233,7 +233,7 @@ export default function AgenticPage() {
               <p className="text-sm text-black/45 leading-relaxed">Support for time-sensitive, short-term field requirements, subject to location and team availability.</p>
             </BentoCard>
 
-            <BentoCard className="col-span-12 md:col-span-4 p-8 min-h-[200px]" delay={160}>
+            <BentoCard className="col-span-12 md:col-span-4 p-6 md:p-8 min-h-[200px]" delay={160}>
               <div className="w-10 h-10 rounded-xl border border-black/10 flex items-center justify-center mb-5">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10h8M8 14h5"/></svg>
               </div>
@@ -241,7 +241,7 @@ export default function AgenticPage() {
               <p className="text-sm text-black/45 leading-relaxed">One field execution partner for supported locations and multi-city projects across major hubs.</p>
             </BentoCard>
 
-            <BentoCard className="col-span-12 md:col-span-4 p-8 min-h-[200px]" delay={200}>
+            <BentoCard className="col-span-12 md:col-span-4 p-6 md:p-8 min-h-[200px]" delay={200}>
               <div className="w-10 h-10 rounded-xl border border-black/10 flex items-center justify-center mb-5">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               </div>
@@ -253,13 +253,13 @@ export default function AgenticPage() {
       </section>
 
       {/* ── BUILD YOUR AGENTS (4 cards) ───────────────────────────────────── */}
-      <section id="agents" className="py-32 px-6 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      <section id="agents" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-black/[0.06]">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
             <div>
               <PixelIcon type="agents" size={40} />
               <div className="mt-4"><Tag>AGENT TYPES</Tag></div>
-              <RevealText className="mt-5 text-4xl md:text-5xl font-light tracking-tight leading-[1.05]">
+              <RevealText className="mt-5 text-3xl md:text-5xl font-light tracking-tight leading-[1.05]">
                 {"Plug-and-play agents\nready to deploy."}
               </RevealText>
             </div>
@@ -273,12 +273,12 @@ export default function AgenticPage() {
       </section>
 
       {/* ── HOW IT WORKS ──────────────────────────────────────────────────── */}
-      <section id="workflow" className="py-32 px-6 md:px-12 lg:px-20 border-t border-black/[0.06] overflow-hidden">
+      <section id="workflow" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-black/[0.06] overflow-hidden">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-16">
+          <div className="mb-12">
             <PixelIcon type="workflow" size={40} />
             <div className="mt-4"><Tag>PROCESS</Tag></div>
-            <RevealText className="mt-5 text-4xl md:text-5xl font-light tracking-tight leading-[1.05]">
+            <RevealText className="mt-5 text-3xl md:text-5xl font-light tracking-tight leading-[1.05]">
               {"From requirement to execution\nin four simple steps."}
             </RevealText>
           </div>
@@ -304,11 +304,11 @@ export default function AgenticPage() {
                   />
                 </div>
                 {/* Number top-left */}
-                <div className="relative z-10 p-7">
+                <div className="relative z-10 p-5 md:p-7">
                   <span className="font-pixel text-[11px] text-black/20 tracking-widest block">{step.n}</span>
                 </div>
                 {/* Text pushed further down */}
-                <div className="relative z-10 px-7 pb-7 mt-auto pt-16">
+                <div className="relative z-10 px-5 pb-5 md:px-7 md:pb-7 mt-auto pt-16">
                   <h3 className="text-2xl font-light mb-3">{step.title}</h3>
                   <p className="text-sm text-black/45 leading-relaxed">{step.desc}</p>
                 </div>
@@ -319,13 +319,13 @@ export default function AgenticPage() {
       </section>
 
       {/* ── INTEGRATIONS ──────────────────────────────────────────────────── */}
-      <section id="integrations" className="py-32 px-6 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      <section id="integrations" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-black/[0.06]">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
             <div>
               <PixelIcon type="integrations" size={40} />
               <div className="mt-4"><Tag>INTEGRATIONS</Tag></div>
-              <RevealText className="mt-5 text-4xl md:text-5xl font-light tracking-tight leading-[1.05]">
+              <RevealText className="mt-5 text-3xl md:text-5xl font-light tracking-tight leading-[1.05]">
                 {"Connect any tool.\nControl any system."}
               </RevealText>
             </div>
@@ -389,12 +389,12 @@ export default function AgenticPage() {
       </section>
 
       {/* ── SECURITY & OBSERVABILITY ──────────────────────────────────��──── */}
-      <section id="security" className="py-32 px-6 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      <section id="security" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-black/[0.06]">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-16">
+          <div className="mb-12">
             <PixelIcon type="platform" size={40} />
             <div className="mt-4"><Tag>SECURITY</Tag></div>
-            <RevealText className="mt-5 text-4xl md:text-5xl font-light tracking-tight leading-[1.05]">
+            <RevealText className="mt-5 text-3xl md:text-5xl font-light tracking-tight leading-[1.05]">
               {"Enterprise-grade\nfrom day one."}
             </RevealText>
           </div>
@@ -501,13 +501,13 @@ export default function AgenticPage() {
       </section>
 
       {/* ── LIVE AGENTS ��──────────────────────────────────────────────────── */}
-      <section id="live" className="py-32 px-6 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      <section id="live" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-black/[0.06]">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
               <PixelIcon type="agents" size={40} />
               <div className="mt-4"><Tag>LIVE RIGHT NOW</Tag></div>
-              <RevealText className="mt-5 text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
+              <RevealText className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
                 {"Agents working\n24 / 7, autonomously."}
               </RevealText>
               <p className="mt-6 text-base text-black/40 leading-relaxed max-w-sm">
@@ -526,12 +526,12 @@ export default function AgenticPage() {
       </section>
 
       {/* ── PRICING ───────────────────────────────────���────������─────────────── */}
-      <section id="pricing" className="py-32 px-6 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      <section id="pricing" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-black/[0.06]">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16 flex flex-col items-center">
+          <div className="text-center mb-12 flex flex-col items-center">
             <PixelIcon type="pricing" size={40} />
             <div className="mt-4"><Tag>PRICING</Tag></div>
-            <RevealText className="mt-5 text-4xl md:text-5xl font-light tracking-tight leading-[1.05]">
+            <RevealText className="mt-5 text-3xl md:text-5xl font-light tracking-tight leading-[1.05]">
               {"Pay as your agents grow."}
             </RevealText>
           </div>
@@ -583,13 +583,13 @@ export default function AgenticPage() {
                     </li>
                   ))}
                 </ul>
-                <button className={`w-full py-3 rounded-xl text-sm tracking-widest transition-all duration-200 ${
-                  plan.highlight
-                    ? "bg-[#111] text-white hover:bg-[#333]"
-                    : "border border-black/10 text-black/60 hover:border-black/25 hover:text-black hover:bg-black/[0.04]"
-                }`}>
-                  {plan.name === "Enterprise" ? "CONTACT SALES" : "GET STARTED"}
-                </button>
+                <button className={`w-full py-3.5 rounded-xl text-sm tracking-widest transition-all duration-200 ${
+                plan.highlight
+                  ? "bg-[#111] text-white hover:bg-[#333]"
+                  : "border border-black/10 text-black/60 hover:border-black/25 hover:text-black hover:bg-black/[0.04]"
+              }`}>
+                {plan.name === "Enterprise" ? "CONTACT SALES" : "GET STARTED"}
+              </button>
               </BentoCard>
             ))}
           </div>

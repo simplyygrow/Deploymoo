@@ -8,7 +8,7 @@ export function SharedCta({ actionType = 'email' }: { actionType?: 'email' | 'co
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section className="relative py-32 px-6 md:px-12 lg:px-20 border-t border-black/[0.06] overflow-hidden">
+    <section className="relative py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-black/[0.06] overflow-hidden">
       {/* Glass panels image — anchored to bottom center */}
       <img
         src="/images/footer.png"
@@ -35,7 +35,7 @@ export function SharedCta({ actionType = 'email' }: { actionType?: 'email' | 'co
         }}
       />
       <div className="relative z-10 max-w-2xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] mb-6">
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] mb-6">
           Deploy Teams. Execute On-Ground. Scale Faster.
         </h2>
         <p className="text-sm text-black/45 leading-relaxed mb-10">
@@ -58,7 +58,7 @@ export function SharedCta({ actionType = 'email' }: { actionType?: 'email' | 'co
               />
               <button
                 type="submit"
-                className="px-8 py-3 bg-[#111] text-white text-sm rounded-xl hover:bg-[#333] transition-colors tracking-widest font-medium"
+                className="px-8 py-3.5 bg-[#111] text-white text-sm rounded-xl hover:bg-[#333] transition-colors tracking-widest font-medium"
               >
                 JOIN
               </button>
@@ -73,7 +73,7 @@ export function SharedCta({ actionType = 'email' }: { actionType?: 'email' | 'co
           <div className="max-w-md mx-auto flex justify-center">
             <Link
               href="/contact"
-              className="px-8 py-3 bg-[#111] text-white text-sm rounded-xl hover:bg-[#333] transition-colors tracking-widest font-medium"
+              className="px-8 py-3.5 bg-[#111] text-white text-sm rounded-xl hover:bg-[#333] transition-colors tracking-widest font-medium"
             >
               REQUEST QUOTE
             </Link>

@@ -116,16 +116,16 @@ export default function ServicesClient() {
       {/* Hero Section Spacer */}
       <div className="pt-40 pb-16 px-6 md:px-12 lg:px-20 max-w-6xl mx-auto">
         <Tag>SERVICES</Tag>
-        <RevealText className="mt-5 text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
+        <RevealText className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
           {"Our Field Execution Services"}
         </RevealText>
       </div>
 
       {/* Services Grid */}
-      <section className="py-16 px-6 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      <section className="py-12 px-6 md:py-16 md:px-12 lg:px-20 border-t border-black/[0.06]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" onMouseMove={handleMouse}>
           {services.map((svc, i) => (
-            <BentoCard key={i} className="p-8 flex flex-col h-full" delay={i * 80}>
+            <BentoCard key={i} className="p-6 md:p-8 flex flex-col h-full" delay={i * 80}>
               <h3 className="text-xl font-light mb-3">{svc.title}</h3>
               <p className="text-sm text-black/45 leading-relaxed mb-6">{svc.desc}</p>
               
@@ -149,11 +149,11 @@ export default function ServicesClient() {
       </section>
 
       {/* FAQ Accordion */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      <section className="py-16 px-6 md:py-24 md:px-12 lg:px-20 border-t border-black/[0.06]">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 flex flex-col items-center">
             <Tag>FAQ</Tag>
-            <h2 className="mt-5 text-3xl md:text-4xl font-light tracking-tight leading-[1.05]">Frequently Asked Questions</h2>
+            <h2 className="mt-5 text-2xl md:text-4xl font-light tracking-tight leading-[1.05]">Frequently Asked Questions</h2>
           </div>
           
           <div className="space-y-4" onMouseMove={handleMouse}>

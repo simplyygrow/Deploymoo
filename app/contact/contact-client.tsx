@@ -65,18 +65,18 @@ export default function ContactClient() {
       {/* Hero Section Spacer */}
       <div className="pt-40 pb-16 px-6 md:px-12 lg:px-20 max-w-6xl mx-auto">
         <Tag>CONTACT</Tag>
-        <RevealText className="mt-5 text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
+        <RevealText className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
           {"Need a Team On-Ground?\nShare Your Project Requirement."}
         </RevealText>
       </div>
 
-      <section className="py-16 px-6 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      <section className="py-12 px-6 md:py-16 md:px-12 lg:px-20 border-t border-black/[0.06]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8" onMouseMove={handleMouse}>
             
             {/* Contact Information */}
             <div className="lg:col-span-5 space-y-4">
               
-              <BentoCard className="p-8" delay={0}>
+              <BentoCard className="p-6 md:p-8" delay={0}>
                 <div className="text-xs text-black/30 tracking-widest uppercase mb-6">HEAD OFFICE</div>
                 <p className="text-sm text-black/60 leading-relaxed mb-6">
                   Near Mundipura Masjid, Ramganj Ward<br/>
@@ -96,7 +96,7 @@ export default function ContactClient() {
                 </div>
               </BentoCard>
 
-              <BentoCard className="p-8" delay={80}>
+              <BentoCard className="p-6 md:p-8" delay={80}>
                 <div className="text-xs text-black/30 tracking-widest uppercase mb-6">CORPORATE / OPS OFFICE</div>
                 <p className="text-sm text-black/60 leading-relaxed mb-6">
                   Off Juhu Circle, New Link Road,<br/>
@@ -110,7 +110,7 @@ export default function ContactClient() {
                 </div>
               </BentoCard>
 
-              <BentoCard className="p-8" delay={160}>
+              <BentoCard className="p-6 md:p-8" delay={160}>
                 <div className="text-xs text-black/30 tracking-widest uppercase mb-6">SOCIAL</div>
                 <div className="flex space-x-6">
                   <a href="https://wa.me/message/4ZTBQI5MAZ6UP1" target="_blank" rel="noopener noreferrer" className="text-sm text-black/60 hover:text-[#111] transition-colors underline underline-offset-4">WhatsApp</a>
@@ -122,7 +122,7 @@ export default function ContactClient() {
 
             {/* Form */}
             <div className="lg:col-span-7">
-               <BentoCard className="p-8 md:p-10 h-full" delay={120}>
+               <BentoCard className="p-6 md:p-10 h-full" delay={120}>
                  <div className="text-xs text-black/30 tracking-widest uppercase mb-8">QUOTE REQUEST</div>
                  {!submitted ? (
                    <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="space-y-4">
@@ -203,7 +203,7 @@ export default function ContactClient() {
                       </div>
 
                       <div className="pt-4">
-                         <button type="submit" className="w-full sm:w-auto px-8 py-3 bg-[#111] text-white text-sm rounded-xl hover:bg-[#333] transition-colors tracking-widest font-medium">
+                         <button type="submit" className="w-full sm:w-auto px-8 py-3.5 bg-[#111] text-white text-sm rounded-xl hover:bg-[#333] transition-colors tracking-widest font-medium">
                            REQUEST DEPLOYMENT QUOTE
                          </button>
                       </div>

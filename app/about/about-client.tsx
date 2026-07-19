@@ -91,15 +91,15 @@ export default function AboutClient() {
       {/* Hero */}
       <div className="pt-40 pb-16 px-6 md:px-12 lg:px-20 max-w-6xl mx-auto">
         <Tag>ABOUT US</Tag>
-        <RevealText className="mt-5 text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
+        <RevealText className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
           {"Your On-Ground\nField Execution Partner"}
         </RevealText>
       </div>
 
       {/* Positioning Section */}
-      <section className="py-16 px-6 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      <section className="py-12 px-6 md:py-16 md:px-12 lg:px-20 border-t border-black/[0.06]">
         <div className="max-w-4xl mx-auto text-center" onMouseMove={handleMouse}>
-            <BentoCard className="p-8 md:p-12" delay={0}>
+            <BentoCard className="p-6 md:p-12" delay={0}>
               <h3 className="text-xl md:text-2xl font-light mb-6 leading-relaxed">
                 Deploymo helps companies quickly deploy managed on-ground teams for field marketing campaigns, retail projects, events, brand activations, surveys and multi-location field operations. 
               </h3>
@@ -111,16 +111,16 @@ export default function AboutClient() {
       </section>
 
       {/* How We Work */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      <section className="py-16 px-6 md:py-24 md:px-12 lg:px-20 border-t border-black/[0.06]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 flex flex-col items-center">
             <Tag>PROCESS</Tag>
-            <h2 className="mt-5 text-3xl md:text-4xl font-light tracking-tight leading-[1.05]">How We Work</h2>
+            <h2 className="mt-5 text-2xl md:text-4xl font-light tracking-tight leading-[1.05]">How We Work</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" onMouseMove={handleMouse}>
             {steps.map((step, i) => (
-              <BentoCard key={step.n} className="p-8 flex flex-col min-h-[240px]" delay={i * 60}>
+              <BentoCard key={step.n} className="p-6 md:p-8 flex flex-col min-h-[240px]" delay={i * 60}>
                 <div className="font-pixel text-[11px] text-black/20 tracking-widest mb-6 block">{step.n}</div>
                 <h3 className="text-xl font-light mb-3">{step.title}</h3>
                 <p className="text-sm text-black/45 leading-relaxed">{step.desc}</p>
@@ -131,11 +131,11 @@ export default function AboutClient() {
       </section>
 
       {/* Who We Work With */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 border-t border-black/[0.06]">
+      <section className="py-16 px-6 md:py-24 md:px-12 lg:px-20 border-t border-black/[0.06]">
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-12 flex flex-col items-center">
             <Tag>PARTNERS</Tag>
-            <h2 className="mt-5 text-3xl md:text-4xl font-light tracking-tight leading-[1.05]">Who We Work With</h2>
+            <h2 className="mt-5 text-2xl md:text-4xl font-light tracking-tight leading-[1.05]">Who We Work With</h2>
           </div>
           
           <div className="flex flex-wrap justify-center gap-4">

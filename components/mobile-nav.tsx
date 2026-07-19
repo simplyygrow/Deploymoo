@@ -79,7 +79,7 @@ export function MobileNav() {
           {/* Burger Menu Button - Mobile Only */}
           <button
             onClick={() => setOpen(v => !v)}
-            className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px] rounded-lg hover:bg-black/[0.04] transition-colors"
+            className="md:hidden flex flex-col justify-center items-center w-11 h-11 gap-[5px] rounded-lg hover:bg-black/[0.04] transition-colors"
             aria-label={open ? "Close menu" : "Open menu"}
           >
             <span
