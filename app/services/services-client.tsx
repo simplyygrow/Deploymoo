@@ -6,7 +6,6 @@ import { SharedFooter } from "@/components/shared-footer"
 import { SharedCta } from "@/components/shared-cta"
 import { RevealText } from "@/components/reveal-text"
 
-// ─── Shared minimal components from page.tsx ───
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null)
   const [inView, setInView] = useState(false)
@@ -43,7 +42,7 @@ function BentoCard({ children, className = "", delay = 0, onMouseMove }: any) {
 
 function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] tracking-widest font-sans text-text-muted bg-text-body/5">
+    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] tracking-widest font-mono text-text-muted bg-text-body/5 uppercase">
       {children}
     </span>
   )
@@ -59,92 +58,102 @@ export default function ServicesClient() {
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const services = [
+  const serviceCategories = [
     {
-      title: "Field Marketing",
-      desc: "Managed field teams for customer outreach, lead generation and on-ground marketing campaigns.",
-      included: ["Field Marketing Campaigns", "Field Executive Deployment", "Customer Outreach Campaigns", "Local Market Campaigns", "Door-to-Door Campaign Teams", "Lead Generation Teams", "Market Outreach Teams", "Customer Acquisition Support", "Multi-Location Field Campaigns", "Field Campaign Supervision", "Campaign Reporting"],
-      who: "Retail and FMCG brands entering new markets."
+      title: "Brand & Sales Promoters",
+      desc: "Trained, well-groomed promoters for product launches, brand awareness campaigns, and sales conversions.",
+      services: ["Brand Promoters", "Sales Promoters", "In-Store Promoters", "Mall Promoters"],
+      who: "FMCG, Consumer Electronics, and Retail Brands."
     },
     {
-      title: "Promoter Staffing",
-      desc: "Brand promoters, retail promoters and product demonstration teams for temporary campaigns.",
-      included: ["Brand Promoters", "Sales Promoters", "Mall Promoters", "Retail Promoters", "In-Store Promoters", "Product Demonstrators", "Exhibition Promoters", "Promotional Staff", "Brand Ambassadors", "Temporary Promotion Teams", "Product Sampling Staff", "Customer Engagement Teams"],
-      who: "Brands needing active in-store representation."
+      title: "Product Sampling & Distribution",
+      desc: "Energetic field staff for direct consumer sampling, leaflet distribution, and trial campaigns.",
+      services: ["Product Sampling Staff", "Flier Distribution Staff", "Roadshow Staff"],
+      who: "Beverage, Snacks, Beauty, and D2C Brands."
     },
     {
-      title: "Event Staffing",
-      desc: "Registration teams, ushers, exhibition staff and event support workforce.",
-      included: ["Registration Staff", "Ushers", "Event Coordinators", "Event Support Staff", "Hospitality Staff", "Exhibition Staff", "Guest Management Teams", "Ground Support Teams", "Event Helpers", "Temporary Event Crew", "Brand Representatives", "Event Supervisors"],
-      who: "Event managers and brand activation agencies."
+      title: "Event & Exhibition Staffing",
+      desc: "Professional hostesses, registration executives, ushers, and exhibition staff for B2B expos.",
+      services: ["Event Hostesses", "Exhibition Staff", "Registration Staff", "Ushering Staff"],
+      who: "Event Organizers, Corporate Agencies, and Trade Shows."
     },
     {
-      title: "Brand Activation",
-      desc: "On-ground teams for product sampling, mall activations, retail campaigns and roadshows.",
-      included: ["Mall Activations", "Retail Activations", "Product Sampling", "Product Demonstrations", "Roadshows", "College Activations", "Market Activations", "Exhibition Activations", "Product Launch Support", "Consumer Engagement Campaigns", "In-Store Activations", "Promotional Campaigns"],
-      who: "BTL and experiential marketing agencies."
+      title: "Field Operations & Supervision",
+      desc: "Experienced supervisors and team leaders to manage attendance, briefing, and campaign KPIs.",
+      services: ["Field Supervisors", "Team Leaders"],
+      who: "Marketing Agencies and Multi-Location Campaign Managers."
     },
     {
-      title: "Retail Audits",
-      desc: "Field auditors for store visits, product checks, retail visibility and market mapping.",
-      included: ["Retail Store Audits", "Store Visits", "Product Availability Checks", "Price Audits", "Competitor Price Checks", "POSM Verification", "Retail Visibility Audits", "Shelf Visibility Checks", "Product Display Verification", "Geo-Tagged Store Visits", "Retail Census Projects", "Market Mapping", "Outlet Verification", "Store Data Collection"],
-      who: "FMCG and retail brands requiring shelf visibility."
-    },
-    {
-      title: "Field Surveys",
-      desc: "Survey teams for consumer research, retailer surveys and offline data collection.",
-      included: ["Consumer Surveys", "Retailer Surveys", "Market Surveys", "Field Surveys", "Product Feedback Surveys", "Customer Feedback Collection", "Offline Data Collection", "Market Mapping", "Competitor Surveys", "Location Surveys", "Multi-City Surveys", "On-Ground Research Support"],
-      who: "Market research firms and D2C brands."
+      title: "Retail Compliance & Audits",
+      desc: "Discreet mystery shoppers and audit staff to measure product placement, store pitch, and compliance.",
+      services: ["Mystery Shoppers", "Audit Staff"],
+      who: "Franchise Owners, Retail Chains, and Quality Assurance Teams."
     }
   ];
 
   const faqs = [
-    { q: "What services does Deploymo provide?", a: "Deploymo provides managed field teams for field marketing, promoter staffing, event staffing, brand activations, retail audits and field survey projects." },
-    { q: "Can Deploymo provide temporary promoters?", a: "Deploymo supports project-based promoter deployment for retail promotions, mall campaigns, exhibitions, product demonstrations and brand activation projects." },
-    { q: "Does Deploymo provide event staff?", a: "Yes. Depending on project requirements and location availability, Deploymo can coordinate registration staff, ushers, exhibition staff, event support teams and other temporary event workforce." },
-    { q: "Can Deploymo deploy large field teams?", a: "Deploymo supports small and high-volume field team requirements based on project scope, location, timeline and workforce availability." },
-    { q: "Does Deploymo execute retail audits?", a: "Yes. Deploymo supports retail store visits, product availability checks, pricing audits, POSM verification, retail visibility audits and market mapping projects." },
-    { q: "Does Deploymo provide field survey teams?", a: "Yes. Deploymo provides project-based teams for consumer surveys, retailer surveys, market research fieldwork and offline data collection." },
-    { q: "Which locations does Deploymo serve?", a: "Deploymo supports Mumbai and selected major cities in India. Project coverage depends on location, team requirement, timeline and scope of work." },
-    { q: "How can I request a field team?", a: "Share the project location, number of people required, project duration, scope of work and reporting requirements with Deploymo. The team will review the requirement and discuss the deployment plan." }
+    { q: "What promotional manpower services does Deploymo offer?", a: "Deploymo provides 15 core services including Brand Promoters, Sales Promoters, Product Sampling Staff, Event Hostesses, Exhibition Staff, Registration Staff, Mall Promoters, Roadshow Staff, Ushering Staff, Flier Distribution Staff, Field Supervisors, Team Leaders, Mystery Shoppers, Audit Staff, and In-Store Promoters." },
+    { q: "What areas do you serve?", a: "Deploymo operates across Mumbai (Andheri, Bandra, BKC, Powai, Goregaon, Malad, Borivali, Lower Parel), Navi Mumbai (Vashi, Nerul, Airoli), and Thane West." },
+    { q: "Do you supply permanent staff or security personnel?", a: "No. Deploymo is exclusively a B2B Promotional Manpower & Event Staffing agency. We focus strictly on temporary, project-based promotional and event workforce deployment." },
+    { q: "How are promoters screened and trained?", a: "Our staff are screened for communication, language proficiency (English, Hindi, Marathi), grooming, and punctual reporting before being briefed on client-specific product scripts." },
+    { q: "What is your lead time for deploying field teams?", a: "We can fulfill requirements within 24 to 48 hours for standard campaign setups depending on headcount and location." },
+    { q: "How can I request a quote for my campaign?", a: "Fill out our online contact form or message our team directly via WhatsApp (+91 6261652749) with your dates, headcount, and location requirements." }
   ];
 
   return (
     <div className="bg-bg-page text-text-body min-h-screen font-sans antialiased">
       <MobileNav />
 
-      {/* Hero Section Spacer */}
+      {/* Hero Section */}
       <div className="pt-40 pb-16 px-6 md:px-12 lg:px-20 max-w-6xl mx-auto">
-        <Tag>SERVICES</Tag>
+        <Tag>PROMOTIONAL SERVICES</Tag>
         <RevealText className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] text-text-heading">
-          {"Our Field Execution Services"}
+          {"B2B Promotional Manpower\n& Event Staffing Solutions"}
         </RevealText>
+        <p className="mt-6 text-base text-text-body/70 max-w-2xl leading-relaxed">
+          Deploymo provides trained field staff and event manpower for brand activations, trade expos, retail promotions, and product sampling across Mumbai, Navi Mumbai, and Thane.
+        </p>
       </div>
 
-      {/* Services Grid */}
+      {/* 15 Core Services Grid */}
       <section className="py-12 px-6 md:py-16 md:px-12 lg:px-20 border-t border-border-custom">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" onMouseMove={handleMouse}>
-          {services.map((svc, i) => (
-            <BentoCard key={i} className="p-6 md:p-8 flex flex-col h-full" delay={i * 80}>
-              <h3 className="text-xl font-light mb-3 text-text-heading">{svc.title}</h3>
-              <p className="text-sm text-text-body/75 leading-relaxed mb-6">{svc.desc}</p>
-              
-              <div className="mt-auto">
-                <div className="text-xs text-text-muted tracking-widest uppercase mb-3">WHAT'S INCLUDED</div>
-                <ul className="space-y-3 mb-8">
-                  {svc.included.map((item, j) => (
-                    <li key={j} className="flex items-start gap-3 text-sm text-text-body/80">
-                      <div className="w-1.5 h-1.5 rounded-full bg-text-muted/40 mt-1.5 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <div className="pt-5 border-t border-border-custom">
-                  <p className="text-xs text-text-body/70 font-medium"><span className="text-text-muted tracking-widest uppercase text-[10px] mr-2">FOR</span> {svc.who}</p>
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-2xl font-light text-text-heading mb-3">Our 15 Core Services</h2>
+            <p className="text-xs text-text-muted font-mono uppercase tracking-widest">Strictly Focused Scope</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" onMouseMove={handleMouse}>
+            {serviceCategories.map((cat, i) => (
+              <BentoCard key={i} className="p-6 md:p-8 flex flex-col h-full" delay={i * 80}>
+                <h3 className="text-xl font-light mb-3 text-text-heading">{cat.title}</h3>
+                <p className="text-sm text-text-body/75 leading-relaxed mb-6">{cat.desc}</p>
+                
+                <div className="mt-auto">
+                  <div className="text-[11px] font-mono text-text-muted tracking-widest uppercase mb-3">SERVICES INCLUDED</div>
+                  <ul className="space-y-2.5 mb-6">
+                    {cat.services.map((svc, j) => (
+                      <li key={j} className="flex items-center gap-2.5 text-xs text-text-heading font-medium">
+                        <div className="w-1.5 h-1.5 rounded-full bg-text-heading/60 shrink-0" />
+                        {svc}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="pt-4 border-t border-border-custom">
+                    <p className="text-xs text-text-body/70 font-medium">
+                      <span className="text-text-muted tracking-widest uppercase text-[10px] font-mono mr-2">PRIMARY CLIENTS:</span> {cat.who}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </BentoCard>
-          ))}
+              </BentoCard>
+            ))}
+          </div>
+
+          {/* Scope Exclusion Reminder */}
+          <div className="mt-12 p-6 rounded-2xl border border-amber-500/20 bg-amber-500/5 text-xs text-text-body/80 leading-relaxed">
+            <strong className="text-amber-600 dark:text-amber-400 font-semibold block mb-1">Agency Scope Notice:</strong>
+            Deploymo exclusively specializes in promotional manpower and event staffing. We do not provide permanent HR placement, security guards, or office administrative staff.
+          </div>
         </div>
       </section>
 
@@ -163,7 +172,7 @@ export default function ServicesClient() {
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full relative z-10 px-6 py-5 flex items-center justify-between text-left cursor-pointer"
                 >
-                  <span className="text-lg font-light pr-4 text-text-heading">{faq.q}</span>
+                  <span className="text-base font-light pr-4 text-text-heading">{faq.q}</span>
                   <div className="w-8 h-8 rounded-full border border-border-custom flex flex-shrink-0 items-center justify-center transition-transform duration-300" style={{ transform: openFaq === i ? 'rotate(180deg)' : 'none' }}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M6 9l6 6 6-6"/></svg>
                   </div>
@@ -172,7 +181,7 @@ export default function ServicesClient() {
                   className="px-6 overflow-hidden transition-all duration-500 ease-in-out relative z-10"
                   style={{ maxHeight: openFaq === i ? '200px' : '0px', opacity: openFaq === i ? 1 : 0, paddingBottom: openFaq === i ? '1.5rem' : '0' }}
                 >
-                  <p className="text-sm text-text-body/85 leading-relaxed">{faq.a}</p>
+                  <p className="text-xs md:text-sm text-text-body/85 leading-relaxed">{faq.a}</p>
                 </div>
               </BentoCard>
             ))}
@@ -185,3 +194,4 @@ export default function ServicesClient() {
     </div>
   )
 }
+

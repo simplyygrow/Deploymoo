@@ -1,8 +1,7 @@
 "use client"
 
 import React, { useRef, useEffect, useState, useCallback } from "react"
-import { IntroAnimation, INTRO_DURATION_MS, HERO_REVEAL_MS } from "@/components/intro-animation"
-import { AgentInterface } from "@/components/agent-interface"
+import { IntroAnimation, INTRO_DURATION_MS } from "@/components/intro-animation"
 import { PixelIcon } from "@/components/pixel-icon"
 import { LiveAgentFeed, LiveAgentCounter } from "@/components/live-agent-feed"
 import { RevealText } from "@/components/reveal-text"
@@ -11,6 +10,7 @@ import { MobileNav } from "@/components/mobile-nav"
 import { DevExSection } from "@/components/devex-section"
 import { SharedFooter } from "@/components/shared-footer"
 import { SharedCta } from "@/components/shared-cta"
+import Link from "next/link"
 
 // ─── Intersection Observer hook ──────────────────────────────────────────────
 function useInView(threshold = 0.15) {
@@ -26,26 +26,6 @@ function useInView(threshold = 0.15) {
   return { ref, inView }
 }
 
-// ─── Animated counter ────────────────────────────────────────────────────────
-function Counter({ end, suffix = "" }: { end: number; suffix?: string }) {
-  const [count, setCount] = useState(0)
-  const { ref, inView } = useInView()
-  useEffect(() => {
-    if (!inView) return
-    let start = 0
-    const duration = 1800
-    const step = 16
-    const increment = end / (duration / step)
-    const timer = setInterval(() => {
-      start += increment
-      if (start >= end) { setCount(end); clearInterval(timer) }
-      else setCount(Math.floor(start))
-    }, step)
-    return () => clearInterval(timer)
-  }, [inView, end])
-  return <span ref={ref}>{count.toLocaleString()}{suffix}</span>
-}
-
 // ─── Bento card ──────────────────────────────────────────────────────────────
 function BentoCard({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const { ref, inView } = useInView(0.1)
@@ -59,7 +39,6 @@ function BentoCard({ children, className = "", delay = 0 }: { children: React.Re
         transition: `opacity 0.7s ease ${delay}ms, transform 0.7s ease ${delay}ms, border-color 0.3s ease, background-color 0.3s ease`,
       }}
     >
-      {/* Hover glow spot */}
       <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{ background: "radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0,0,0,0.03), transparent 60%)" }}
       />
@@ -71,21 +50,26 @@ function BentoCard({ children, className = "", delay = 0 }: { children: React.Re
 // ─── Pill tag ─────────────────────────────────────────────────────────────────
 function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] tracking-widest font-sans text-text-muted bg-text-body/5">
+    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] tracking-widest font-mono text-text-muted bg-text-body/5 uppercase">
       {children}
     </span>
   )
 }
 
-// ─── Main page ────────────────────────────────────────────────────────────────
-export default function AgenticPage() {
+const CORE_SERVICES = [
+  "Brand Promoters", "Sales Promoters", "Product Sampling Staff", "Event Hostesses",
+  "Exhibition Staff", "Registration Staff", "Mall Promoters", "Roadshow Staff",
+  "Ushering Staff", "Flier Distribution Staff", "Field Supervisors", "Team Leaders",
+  "Mystery Shoppers", "Audit Staff", "In-Store Promoters"
+]
+
+export default function DeploymoHomePage() {
   const [heroReady, setHeroReady] = useState(false)
   const [videoZoomDone, setVideoZoomDone] = useState(false)
   const handleIntroDone = useCallback(() => {
     setHeroReady(true)
   }, [])
 
-  // Simple zoom-out: video starts scaled up, then smoothly settles to normal after intro ends
   useEffect(() => {
     const t = setTimeout(() => setVideoZoomDone(true), INTRO_DURATION_MS + 100)
     return () => clearTimeout(t)
@@ -109,14 +93,12 @@ export default function AgenticPage() {
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section className="relative h-screen overflow-hidden">
-
-        {/* Video background — zooms in once intro is done */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute inset-0 w-full h-full object-cover z-0 opacity-40 dark:opacity-30"
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/agentic-hero-9yW3wnTNMfn2U6lsVhTTZSJFEvAoSj.mp4"
           style={{
             transform: videoZoomDone ? "scale(1)" : "scale(1.1)",
@@ -124,40 +106,58 @@ export default function AgenticPage() {
           }}
         />
 
-
-
-        {/* Progressive blur + light gradient rising from bottom */}
         <div className="absolute inset-x-0 bottom-0 z-10 pointer-events-none hero-rising-gradient" style={{ height: "65%" }} />
-        {/* Backdrop blur layers — progressively lighter toward top */}
         <div className="absolute inset-x-0 bottom-0 z-10 pointer-events-none" style={{ height: "20%", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", maskImage: "linear-gradient(to top, black 0%, transparent 100%)", WebkitMaskImage: "linear-gradient(to top, black 0%, transparent 100%)" }} />
         <div className="absolute inset-x-0 bottom-0 z-10 pointer-events-none" style={{ height: "38%", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)", maskImage: "linear-gradient(to top, black 0%, transparent 100%)", WebkitMaskImage: "linear-gradient(to top, black 0%, transparent 100%)" }} />
-        <div className="absolute inset-x-0 bottom-0 z-10 pointer-events-none" style={{ height: "55%", backdropFilter: "blur(2px)", WebkitBackdropFilter: "blur(2px)", maskImage: "linear-gradient(to top, black 0%, transparent 100%)", WebkitMaskImage: "linear-gradient(to top, black 0%, transparent 100%)" }} />
 
-        {/* Spacer so hero content doesn't sit under the fixed nav */}
         <div className="h-20" />
 
-        {/* Title + metrics — anchored to bottom left */}
-        <div className="absolute inset-x-0 bottom-0 z-30 flex flex-col px-6 md:px-12 pb-12 max-w-3xl">
-          {/* Title */}
+        <div className="absolute inset-x-0 bottom-0 z-30 flex flex-col px-6 md:px-12 pb-12 max-w-4xl">
+          <div className="mb-4">
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-mono tracking-widest text-text-muted bg-bg-card border border-border-custom uppercase">
+              B2B Promotional Manpower & Event Staffing
+            </span>
+          </div>
+
           <h1
-            className="text-4xl sm:text-6xl md:text-8xl font-light text-text-heading leading-[1.0] tracking-tight mb-10"
+            className="text-3xl sm:text-5xl md:text-7xl font-light text-text-heading leading-[1.05] tracking-tight mb-8"
             style={{
               fontFamily: '"IBM Plex Sans", sans-serif',
               opacity: heroReady ? 1 : 0,
               filter: heroReady ? "blur(0px)" : "blur(24px)",
               transform: heroReady ? "translateY(0px)" : "translateY(32px)",
-              transition: "opacity 1s cubic-bezier(0.16,1,0.3,1) 0ms, filter 1s cubic-bezier(0.16,1,0.3,1) 0ms, transform 1s cubic-bezier(0.16,1,0.3,1) 0ms",
+              transition: "opacity 1.5s cubic-bezier(0.16,1,0.3,1) 0.3s, filter 1.5s cubic-bezier(0.16,1,0.3,1) 0.3s, transform 1.5s cubic-bezier(0.16,1,0.3,1) 0.3s",
             }}
           >
-            Deploy Teams.<br />Execute On-Ground.<br />Scale Faster.
+            Promotional Staffing.<br />Event Manpower.<br />Deployed Across Mumbai.
           </h1>
 
-          {/* 3 metrics — staggered after title */}
-          <div className="flex gap-8 sm:gap-12">
+          <p className="text-sm md:text-base text-text-body/80 max-w-2xl leading-relaxed mb-8">
+            Deploymo supplies trained brand promoters, sales promoters, hostesses, product sampling staff, and event manpower for corporate activations, exhibitions, and retail campaigns in Mumbai, Navi Mumbai, and Thane.
+          </p>
+
+          <div className="flex flex-wrap items-center gap-4 mb-10">
+            <Link
+              href="/contact"
+              className="px-8 py-3.5 bg-text-heading text-bg-page text-xs tracking-widest rounded-xl hover:opacity-90 transition-all font-semibold uppercase"
+            >
+              Get a Quote
+            </Link>
+            <a
+              href="https://wa.me/message/4ZTBQI5MAZ6UP1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3.5 border border-border-custom text-text-heading text-xs tracking-widest rounded-xl hover:border-text-heading/30 hover:bg-text-body/[0.04] transition-all font-semibold uppercase flex items-center gap-2"
+            >
+              <span>WhatsApp Direct</span> →
+            </a>
+          </div>
+
+          <div className="flex gap-8 sm:gap-12 pt-6 border-t border-border-custom/50">
             {[
-              { value: "50M+", label: "Tasks" },
-              { value: "99.9%", label: "Uptime" },
-              { value: "180+", label: "Countries" },
+              { value: "150+", label: "Field Staff Deployed" },
+              { value: "100%", label: "Punctuality Guarantee" },
+              { value: "3 Regions", label: "Mumbai • Navi Mumbai • Thane" },
             ].map((stat, i) => (
               <div
                 key={i}
@@ -168,8 +168,8 @@ export default function AgenticPage() {
                   transition: `opacity 0.8s cubic-bezier(0.16,1,0.3,1) ${120 + i * 80}ms, filter 0.8s cubic-bezier(0.16,1,0.3,1) ${120 + i * 80}ms, transform 0.8s cubic-bezier(0.16,1,0.3,1) ${120 + i * 80}ms`,
                 }}
               >
-                <div className="text-3xl sm:text-4xl text-text-heading font-light tracking-tight" style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>{stat.value}</div>
-                <div className="text-xs text-text-muted tracking-widest uppercase mt-1" style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>{stat.label}</div>
+                <div className="text-2xl sm:text-3xl text-text-heading font-light tracking-tight">{stat.value}</div>
+                <div className="text-[11px] text-text-muted tracking-widest uppercase mt-0.5">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -183,14 +183,12 @@ export default function AgenticPage() {
             <PixelIcon type="platform" size={40} />
             <div className="mt-4"><Tag>WHY DEPLOYMO</Tag></div>
             <RevealText className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
-              {"Everything you need\nfor field execution."}
+              {"Professional event staffing\n& promotional manpower."}
             </RevealText>
           </div>
 
           <div className="grid grid-cols-12 grid-rows-auto gap-3" onMouseMove={handleMouse}>
-            {/* Big left card — full width now that multi-agent is removed */}
-            <BentoCard className="col-span-12 p-8 min-h-[200px] flex flex-col justify-between relative overflow-hidden" delay={0}>
-              {/* Arc background image — always fills container, objects pushed to bottom third */}
+            <BentoCard className="col-span-12 p-8 min-h-[220px] flex flex-col justify-between relative overflow-hidden" delay={0}>
               <img
                 src="/images/arc.png"
                 alt=""
@@ -198,70 +196,65 @@ export default function AgenticPage() {
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{ objectPosition: "center 70%" }}
               />
-              {/* Progressive blur layer — blurs from 45% downward */}
               <div className="absolute inset-0" style={{
                 maskImage: "linear-gradient(to bottom, transparent 45%, black 100%)",
                 WebkitMaskImage: "linear-gradient(to bottom, transparent 45%, black 100%)",
                 backdropFilter: "blur(16px)",
                 WebkitBackdropFilter: "blur(16px)",
               }} />
-              {/* Fade-to-background gradient — matches site bg color #f5f4f0 */}
-              <div
-                className="absolute inset-0 bento-fade-gradient"
-              />
-              {/* Content */}
+              <div className="absolute inset-0 bento-fade-gradient" />
+
               <div className="relative z-10">
                 <div className="w-10 h-10 rounded-xl border border-border-custom bg-bg-card/60 flex items-center justify-center mb-6" style={{ backdropFilter: "blur(8px)" }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><path d="m4.93 4.93 2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
-                <h3 className="text-xl font-light mb-3 text-text-heading">Managed On-Ground Teams</h3>
-                <p className="text-sm text-text-body/70 leading-relaxed max-w-sm">
-                  Project-based field teams coordinated according to client requirements. No boilerplate hiring, just executed projects.
+                <h3 className="text-xl font-light mb-3 text-text-heading">Managed Field Manpower</h3>
+                <p className="text-sm text-text-body/70 leading-relaxed max-w-lg">
+                  Every promoter, hostess, and field executive is screened for communication skills, grooming, and campaign readiness. Supervised on-ground execution for total operational peace of mind.
                 </p>
               </div>
             </BentoCard>
 
-            {/* Bottom row */}
             <BentoCard className="col-span-12 md:col-span-4 p-6 md:p-8 min-h-[200px]" delay={120}>
               <div className="w-10 h-10 rounded-xl border border-border-custom flex items-center justify-center mb-5">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               </div>
-              <h3 className="text-lg font-light mb-2 text-text-heading">Rapid Team Deployment</h3>
-              <p className="text-sm text-text-body/70 leading-relaxed">Support for time-sensitive, short-term field requirements, subject to location and team availability.</p>
+              <h3 className="text-lg font-light mb-2 text-text-heading">Rapid Deployment</h3>
+              <p className="text-sm text-text-body/70 leading-relaxed">Turnkey staffing fulfillment within 24 to 48 hours for urgent marketing activations and corporate events.</p>
             </BentoCard>
 
             <BentoCard className="col-span-12 md:col-span-4 p-6 md:p-8 min-h-[200px]" delay={160}>
               <div className="w-10 h-10 rounded-xl border border-border-custom flex items-center justify-center mb-5">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10h8M8 14h5"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
-              <h3 className="text-lg font-light mb-2 text-text-heading">Multi-Location Execution</h3>
-              <p className="text-sm text-text-body/70 leading-relaxed">One field execution partner for supported locations and multi-city projects across major hubs.</p>
+              <h3 className="text-lg font-light mb-2 text-text-heading">Tri-Region Coverage</h3>
+              <p className="text-sm text-text-body/70 leading-relaxed">Dedicated local manpower pools across Mumbai, Navi Mumbai, and Thane West for seamless logistics.</p>
             </BentoCard>
 
             <BentoCard className="col-span-12 md:col-span-4 p-6 md:p-8 min-h-[200px]" delay={200}>
               <div className="w-10 h-10 rounded-xl border border-border-custom flex items-center justify-center mb-5">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               </div>
-              <h3 className="text-lg font-light mb-2 text-text-heading">Project-Based Workforce</h3>
-              <p className="text-sm text-text-body/70 leading-relaxed">Specialized teams mapped uniquely for campaign, event, audit, survey and temporary field projects.</p>
+              <h3 className="text-lg font-light mb-2 text-text-heading">Supervised Quality</h3>
+              <p className="text-sm text-text-body/70 leading-relaxed">Experienced Team Leaders monitor dress code compliance, pitch accuracy, and daily attendance logs.</p>
             </BentoCard>
           </div>
         </div>
       </section>
 
-      {/* ── BUILD YOUR AGENTS (4 cards) ───────────────────────────────────── */}
+      {/* ── STAFFING CATEGORIES ───────────────────────────────────────────── */}
       <section id="agents" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
             <div>
               <PixelIcon type="agents" size={40} />
-              <div className="mt-4"><Tag>AGENT TYPES</Tag></div>
+              <div className="mt-4"><Tag>MANPOWER CATEGORIES</Tag></div>
               <RevealText className="mt-5 text-3xl md:text-5xl font-light tracking-tight leading-[1.05]">
-                {"Plug-and-play agents\nready to deploy."}
+                {"Specialized staff for\nevery marketing campaign."}
               </RevealText>
             </div>
             <p className="text-sm text-text-body/70 leading-relaxed max-w-xs">
-              Start with a pre-built agent or compose your own from primitives. Every agent is versioned, testable, and observable.
+              From corporate exhibitions to retail sampling campaigns, we match trained staff to your exact brand tone.
             </p>
           </div>
 
@@ -276,38 +269,35 @@ export default function AgenticPage() {
             <PixelIcon type="workflow" size={40} />
             <div className="mt-4"><Tag>PROCESS</Tag></div>
             <RevealText className="mt-5 text-3xl md:text-5xl font-light tracking-tight leading-[1.05]">
-              {"From requirement to execution\nin four simple steps."}
+              {"From campaign brief\nto on-ground execution."}
             </RevealText>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-3" onMouseMove={handleMouse}>
             {[
-              { n: "01", title: "Share Requirement",  desc: "Provide project location, team numbers required, duration, scope of work, and KPIs.", delay: 0,   img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/define-5aafAmGBrxZpOqJ3XLHY3n3qzC2I5K.png" },
-              { n: "02", title: "Project Planning", desc: "Deploymo reviews your requirement and plans the optimal field team structure based on scope.", delay: 80,  img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/compose-5RT5VR4f1Y3GoFmovqTKLTG4UXp3g2.png" },
-              { n: "03", title: "Team Deployment",    desc: "Required on-ground teams are identified, trained, coordinated and deployed for the project.", delay: 140, img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/test-zm8guZwxJHtwWsJ7XO4B0CF7GzlNK8.png" },
-              { n: "04", title: "Field Execution",  desc: "Teams execute assigned field activities exactly according to your approved project brief.", delay: 200, img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/deploy-an8fgHSLzniojkcmRyGGIFQUJF9T5J.png" },
+              { n: "01", title: "Share Brief", desc: "Submit project dates, location (Mumbai/Navi Mumbai/Thane), headcount required, and profile specs.", delay: 0, img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/define-5aafAmGBrxZpOqJ3XLHY3n3qzC2I5K.png" },
+              { n: "02", title: "Staff Shortlisting", desc: "We screen and select appropriate promoters, hostesses, or field staff from our verified database.", delay: 80, img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/compose-5RT5VR4f1Y3GoFmovqTKLTG4UXp3g2.png" },
+              { n: "03", title: "Briefing & Check", desc: "Staff are briefed on product messaging, dress codes, and operational targets prior to deployment.", delay: 140, img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/test-zm8guZwxJHtwWsJ7XO4B0CF7GzlNK8.png" },
+              { n: "04", title: "Field Execution", desc: "Supervised on-ground deployment with real-time reporting and attendance verification.", delay: 200, img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/deploy-an8fgHSLzniojkcmRyGGIFQUJF9T5J.png" },
             ].map((step) => (
               <BentoCard key={step.n} className="relative overflow-hidden flex flex-col min-h-[320px]" delay={step.delay}>
-                {/* Image at top — mask fades it out strongly before the bottom edge */}
                 <div className="absolute inset-x-0 top-0 h-56 pointer-events-none">
                   <img
                     src={step.img}
                     alt={step.title}
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover object-top opacity-60"
                     style={{
                       maskImage: "linear-gradient(to bottom, black 0%, black 30%, transparent 80%)",
                       WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 30%, transparent 80%)",
                     }}
                   />
                 </div>
-                {/* Number top-left */}
                 <div className="relative z-10 p-5 md:p-7">
-                  <span className="font-pixel text-[11px] text-text-muted/40 tracking-widest block">{step.n}</span>
+                  <span className="font-mono text-[11px] text-text-muted/60 tracking-widest block">{step.n}</span>
                 </div>
-                {/* Text pushed further down */}
                 <div className="relative z-10 px-5 pb-5 md:px-7 md:pb-7 mt-auto pt-16">
-                  <h3 className="text-2xl font-light mb-3 text-text-heading">{step.title}</h3>
-                  <p className="text-sm text-text-body/70 leading-relaxed">{step.desc}</p>
+                  <h3 className="text-xl font-light mb-3 text-text-heading">{step.title}</h3>
+                  <p className="text-xs text-text-body/70 leading-relaxed">{step.desc}</p>
                 </div>
               </BentoCard>
             ))}
@@ -315,152 +305,58 @@ export default function AgenticPage() {
         </div>
       </section>
 
-      {/* ── INTEGRATIONS ──────────────────────────────────────────────────── */}
-      <section id="integrations" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-            <div>
-              <PixelIcon type="integrations" size={40} />
-              <div className="mt-4"><Tag>INTEGRATIONS</Tag></div>
-              <RevealText className="mt-5 text-3xl md:text-5xl font-light tracking-tight leading-[1.05]">
-                {"Connect any tool.\nControl any system."}
-              </RevealText>
-            </div>
-            <p className="text-sm text-text-body/70 leading-relaxed max-w-xs">
-              200+ native connectors. Everything from Slack to your internal database. Build custom tools with our SDK in minutes.
-            </p>
-          </div>
-
-          {/* Full-width image block with glass cards */}
-          {/* Mobile: flex-col, image + cards stacked. Desktop: image fills block, cards absolute */}
-          <div className="rounded-2xl overflow-hidden border border-border-custom flex flex-col md:block md:relative" onMouseMove={handleMouse}>
-            {/* Image */}
-            <div className="relative w-full h-[280px] md:h-[480px] shrink-0">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Org%20Arc%20-%20Upscaled-Sk90jShfu7nltLnhoQbaMJC1YaQKuU.png"
-                alt="Agent orchestration architecture"
-                className="absolute inset-0 w-full h-full object-cover object-center"
-              />
-            </div>
-
-            {/* Cards — flex row on mobile (equal spacing), absolute on desktop */}
-            <div className="flex flex-col gap-3 p-4 md:absolute md:bottom-4 md:right-4 md:p-0 md:w-72">
-              <div className="rounded-xl border border-border-custom p-6 bg-white/60 dark:bg-black/60 backdrop-blur-md">
-                <Tag>SDK</Tag>
-                <h3 className="mt-3 text-lg font-light mb-2 text-text-heading">Build custom tools</h3>
-                <p className="text-xs text-text-body/70 leading-relaxed mb-4">Define any function as a tool your agents can call. TypeScript and Python.</p>
-                <div className="bg-text-body/5 rounded-lg border border-border-custom p-3 font-mono text-[11px] text-text-body/70 leading-relaxed">
-                  <span className="text-text-muted/65">// tool definition</span><br />
-                  <span className="text-blue-500 font-medium">defineTool</span>{"({"}<br />
-                  {"  "}<span className="text-amber-600 dark:text-amber-500">name</span>: <span className="text-emerald-600 dark:text-emerald-500">&apos;fetchPrice&apos;</span>,<br />
-                  {"  "}<span className="text-amber-600 dark:text-amber-500">run</span>: <span className="text-text-body/60">async (q) </span>={">"}<br />
-                  {"    "}<span className="text-blue-500">api</span>.get(q)<br />
-                  {"})"}
-                </div>
-              </div>
-
-              <div className="rounded-xl border border-border-custom p-6 bg-white/60 dark:bg-black/60 backdrop-blur-md">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-2 h-2 rounded-full bg-emerald-500/80 animate-pulse" />
-                  <span className="text-xs text-text-muted tracking-widest">LIVE API</span>
-                </div>
-                <p className="text-sm text-text-body/70">Full REST + WebSocket API. Stream agent outputs directly into your product.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECURITY & OBSERVABILITY ──────────────────────────────────��──── */}
-      <section id="security" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
+      {/* ── CORE SERVICES & SERVICE SCOPE EXCLUSION ────────────────────────── */}
+      <section id="services" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
-            <PixelIcon type="platform" size={40} />
-            <div className="mt-4"><Tag>SECURITY</Tag></div>
+            <PixelIcon type="integrations" size={40} />
+            <div className="mt-4"><Tag>SERVICE SCOPE</Tag></div>
             <RevealText className="mt-5 text-3xl md:text-5xl font-light tracking-tight leading-[1.05]">
-              {"Enterprise-grade\nfrom day one."}
+              {"15 specialized promotional\n& event staffing services."}
             </RevealText>
           </div>
 
-          {/* Asymmetric grid: left text + title, right interactive audit log */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Left side — descriptions */}
-            <div className="space-y-6">
-              <p className="text-sm text-text-body/70 leading-relaxed">
-                Every action is logged, every decision is traceable. Built for teams that need compliance without compromise.
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-12">
+            {CORE_SERVICES.map((service, idx) => (
+              <div key={idx} className="p-4 rounded-xl border border-border-custom bg-bg-card hover:border-text-heading/20 transition-all">
+                <span className="text-xs font-mono text-text-muted/60 block mb-2">0{idx + 1}</span>
+                <span className="text-xs font-medium text-text-heading">{service}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Explicit Scope Exclusions Alert Card */}
+          <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="space-y-1">
+              <span className="text-[11px] font-mono text-amber-600 dark:text-amber-400 uppercase tracking-widest font-semibold block">
+                Strict Agency Scope Policy
+              </span>
+              <h4 className="text-base font-medium text-text-heading">
+                Promotional & Event Manpower Specialist Agency
+              </h4>
+              <p className="text-xs text-text-body/70 max-w-2xl leading-relaxed">
+                Deploymo exclusively provides short-term promotional staff, brand promoters, event hostesses, sampling teams, and field execution personnel. We do NOT provide permanent HR recruitment, corporate office staffing, or security services.
               </p>
-
-              <div className="space-y-4">
-                {[
-                  { label: "SOC 2 Type II", desc: "Independently audited security controls" },
-                  { label: "Full Audit Trail", desc: "Every decision logged with full traceability" },
-                  { label: "Real-time Observability", desc: "Monitor, debug, and replay any execution" },
-                ].map((item) => (
-                  <div key={item.label} className="flex gap-4">
-                    <div className="w-1 bg-border-custom rounded-full shrink-0" />
-                    <div>
-                      <h3 className="text-sm font-light mb-1 text-text-heading">{item.label}</h3>
-                      <p className="text-xs text-text-muted">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Compliance badges — vertical stack */}
-              <div className="pt-4 flex flex-col gap-2">
-                {["SOC 2", "GDPR", "HIPAA Ready", "ISO 27001"].map((badge) => (
-                  <div key={badge} className="flex items-center gap-2 text-xs text-text-muted/65">
-                    <span className="w-1 h-1 rounded-full bg-text-muted/65" />
-                    {badge}
-                  </div>
-                ))}
-              </div>
             </div>
-
-            {/* Right side — live audit log visualization */}
-            <BentoCard className="p-6 lg:row-span-1" delay={0}>
-              <div className="text-xs text-text-muted tracking-widest uppercase mb-4">Live Audit Trail</div>
-              <div className="space-y-2">
-                {[
-                  { time: "12:34:21", action: "agent_executed", status: "success" },
-                  { time: "12:34:18", action: "decision_logged", status: "success" },
-                  { time: "12:34:15", action: "tool_called", status: "success" },
-                  { time: "12:34:12", action: "memory_updated", status: "success" },
-                  { time: "12:34:09", action: "output_generated", status: "success" },
-                ].map((log, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-text-body/[0.02] hover:bg-text-body/[0.05] transition-colors border border-border-custom group cursor-pointer"
-                    style={{
-                      animation: `fadeInUp 0.5s cubic-bezier(0.16,1,0.3,1) ${i * 80}ms both`,
-                    }}
-                  >
-                    <span className="text-[10px] text-text-muted/65 font-mono min-w-[60px]">{log.time}</span>
-                    <span className="text-[11px] text-text-body/70 font-light flex-1">{log.action}</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500/60 group-hover:bg-green-500 transition-colors" />
-                  </div>
-                ))}
-              </div>
-              <style>{`
-                @keyframes fadeInUp {
-                  from { opacity: 0; transform: translateY(8px); }
-                  to { opacity: 1; transform: translateY(0); }
-                }
-              `}</style>
-            </BentoCard>
+            <Link
+              href="/services"
+              className="px-6 py-2.5 rounded-xl border border-border-custom text-xs font-medium text-text-heading hover:bg-bg-card transition-colors shrink-0"
+            >
+              View Full Services →
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ── DEVELOPER EXPERIENCE ──────────────────────────────────────────── */}
+      {/* ── OPERATIONAL EXCELLENCE ────────────────────────────────────────── */}
       <DevExSection />
 
-      {/* ── MARQUEE CAPABILITIES ──────────────────────────────────────────── */}
+      {/* ── MARQUEE CAPABILITIES & LOCATIONS ──────────────────────────────── */}
       <section className="py-0 border-t border-border-custom overflow-hidden select-none">
         <div className="flex border-b border-border-custom" style={{ animation: "marqueeLeft 28s linear infinite" }}>
           {[...Array(3)].map((_, rep) => (
             <div key={rep} className="flex shrink-0">
-              {["Web Research", "Code Generation", "Email Drafting", "Data Analysis", "PR Reviews", "Scheduling", "SQL Queries", "API Calls", "File Processing", "Monitoring"].map((cap) => (
+              {["Brand Promoters", "Event Hostesses", "Product Sampling", "Exhibition Staff", "Registration Teams", "Ushering Staff", "Mall Activations", "Roadshows", "Field Supervisors", "Team Leaders"].map((cap) => (
                 <div key={cap} className="flex items-center gap-6 px-10 py-5 border-r border-border-custom shrink-0">
                   <span className="w-1.5 h-1.5 rounded-full bg-text-muted/40 shrink-0" />
                   <span className="text-sm text-text-body/75 whitespace-nowrap tracking-wide">{cap}</span>
@@ -472,7 +368,7 @@ export default function AgenticPage() {
         <div className="flex" style={{ animation: "marqueeRight 22s linear infinite" }}>
           {[...Array(3)].map((_, rep) => (
             <div key={rep} className="flex shrink-0">
-              {["Report Writing", "Slack Summaries", "Lead Scoring", "Image Tagging", "Test Running", "Deployment", "Log Parsing", "Invoice Processing", "Meeting Notes", "Sentiment Analysis"].map((cap) => (
+              {["Mumbai Metro", "Navi Mumbai", "Thane West", "BKC Bandra", "Andheri West", "Powai", "Lower Parel", "Goregaon East", "Vashi", "Malad Mindspace"].map((cap) => (
                 <div key={cap} className="flex items-center gap-6 px-10 py-5 border-r border-border-custom shrink-0">
                   <span className="w-1.5 h-1.5 rounded-full bg-text-muted/20 shrink-0" />
                   <span className="text-sm text-text-body/50 whitespace-nowrap tracking-wide">{cap}</span>
@@ -483,22 +379,22 @@ export default function AgenticPage() {
         </div>
       </section>
 
-      {/* ── LIVE AGENTS ──────────────────────────────────────────────────── */}
+      {/* ── LIVE DEPLOYMENT FEED ───────────────────────────────────────────── */}
       <section id="live" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
               <PixelIcon type="agents" size={40} />
-              <div className="mt-4"><Tag>LIVE RIGHT NOW</Tag></div>
+              <div className="mt-4"><Tag>ON-GROUND OPERATIONS</Tag></div>
               <RevealText className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
-                {"Agents working\n24 / 7, autonomously."}
+                {"Active field teams\nacross Mumbai region."}
               </RevealText>
-              <p className="mt-6 text-base text-text-body/70 leading-relaxed max-w-sm">
-                At any moment, thousands of agents are running tasks on behalf of teams around the world — no human in the loop.
+              <p className="mt-6 text-sm text-text-body/70 leading-relaxed max-w-sm">
+                Our promotional staff and supervisors operate across major commercial hubs, shopping malls, exhibition centers, and high-footfall venues.
               </p>
               <div className="mt-10 flex items-end gap-2">
                 <LiveAgentCounter />
-                <span className="text-text-muted text-sm mb-1 tracking-wide">agents active globally</span>
+                <span className="text-text-muted text-xs mb-1 tracking-wide uppercase font-mono">active promoters deployed</span>
               </div>
             </div>
             <div className="relative">
@@ -508,79 +404,51 @@ export default function AgenticPage() {
         </div>
       </section>
 
-      {/* ── PRICING ──────────────────────────────────────────────────────── */}
-      <section id="pricing" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12 flex flex-col items-center">
+      {/* ── FAQ & ENQUIRY PREPARATION ──────────────────────────────────────── */}
+      <section id="faq" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16 flex flex-col items-center">
             <PixelIcon type="pricing" size={40} />
-            <div className="mt-4"><Tag>PRICING</Tag></div>
+            <div className="mt-4"><Tag>FREQUENTLY ASKED QUESTIONS</Tag></div>
             <RevealText className="mt-5 text-3xl md:text-5xl font-light tracking-tight leading-[1.05]">
-              {"Pay as your agents grow."}
+              {"Everything you need to know."}
             </RevealText>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3" onMouseMove={handleMouse}>
+          <div className="space-y-4">
             {[
               {
-                name: "Sandbox",
-                price: "Free",
-                sub: "Start experimenting",
-                features: ["5 agents", "1,000 tasks/mo", "Community support", "Basic traces"],
-                delay: 0,
+                q: "What regions in Mumbai do you cover for promotional staffing?",
+                a: "Deploymo covers all major areas across Mumbai (Andheri, Bandra, BKC, Powai, Goregaon, Malad, Borivali, Lower Parel), Navi Mumbai (Vashi, Nerul, Airoli), and Thane (Thane West)."
               },
               {
-                name: "Builder",
-                price: "$49",
-                period: "/mo",
-                sub: "For teams shipping fast",
-                features: ["50 agents", "100K tasks/mo", "Priority support", "Full traces + replay", "Custom tools", "REST API"],
-                highlight: true,
-                delay: 80,
+                q: "How quickly can Deploymo deploy promoters or event hostesses?",
+                a: "We accommodate both planned marketing campaigns and urgent short-notice requirements. Standard turnaround for verified team allocation is 24 to 48 hours."
               },
               {
-                name: "Enterprise",
-                price: "Custom",
-                sub: "For orgs at scale",
-                features: ["Unlimited agents", "Unlimited tasks", "Dedicated infra", "SOC 2 / HIPAA", "SLA guarantees", "Custom contracts"],
-                delay: 140,
+                q: "Do you supply staff for permanent corporate roles or security?",
+                a: "No. Deploymo is exclusively a B2B Promotional Manpower and Event Staffing agency. We focus strictly on short-term promotional staff, brand promoters, hostesses, and event execution personnel."
               },
-            ].map((plan) => (
-              <BentoCard
-                key={plan.name}
-                className={`p-8 flex flex-col ${plan.highlight ? "border-text-heading/30 bg-[#F0EEE8] dark:bg-bg-card" : ""}`}
-                delay={plan.delay}
-              >
-                <div className="mb-8">
-                  <div className="font-pixel text-[11px] tracking-widest text-text-muted mb-4">{plan.name}</div>
-                  <div className="flex items-baseline gap-1 mb-1">
-                    <span className="text-4xl font-light text-text-heading">{plan.price}</span>
-                    {plan.period && <span className="text-text-muted text-sm">{plan.period}</span>}
-                  </div>
-                  <p className="text-xs text-text-muted tracking-wide">{plan.sub}</p>
-                </div>
-                <ul className="space-y-3 flex-1 mb-8">
-                  {plan.features.map(f => (
-                    <li key={f} className="flex items-center gap-3 text-sm text-text-body/80">
-                      <div className="w-1 h-1 rounded-full bg-text-muted/30 shrink-0" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <button className={`w-full py-3.5 rounded-xl text-sm tracking-widest transition-all duration-200 ${
-                  plan.highlight
-                    ? "bg-text-heading text-bg-page hover:opacity-90 cursor-pointer"
-                    : "border border-border-custom text-text-body/70 hover:border-text-heading/30 hover:text-text-heading hover:bg-text-body/[0.04] cursor-pointer"
-                }`}>
-                  {plan.name === "Enterprise" ? "CONTACT SALES" : "GET STARTED"}
-                </button>
-              </BentoCard>
+              {
+                q: "How do you ensure staff punctuality and grooming on-ground?",
+                a: "All deployed personnel undergo campaign-specific briefing, mandatory dress code checks, and are supervised on-site by assigned Deploymo Team Leaders with live check-ins."
+              },
+              {
+                q: "How can I request a quote for an upcoming event or campaign?",
+                a: "You can submit an inquiry through our website contact form or directly message our team on WhatsApp at +91 6261652749 for immediate quotation."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="p-6 rounded-2xl border border-border-custom bg-bg-card space-y-2">
+                <h3 className="text-base font-medium text-text-heading">{faq.q}</h3>
+                <p className="text-xs md:text-sm text-text-body/70 leading-relaxed">{faq.a}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── CTA ───────────────────────────────────────────────────────────── */}
-      <SharedCta actionType="email" />
+      <SharedCta actionType="contact" />
 
       {/* ── FOOTER ────────────────────────────────────────────────────────── */}
       <SharedFooter />

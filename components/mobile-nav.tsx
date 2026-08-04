@@ -13,7 +13,18 @@ const NAV_LINKS = [
 export function MobileNav() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const themeToggleControl = null;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true)
+      } else {
+        setScrolled(false)
+      }
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const close = () => setOpen(false);
 
@@ -24,11 +35,9 @@ export function MobileNav() {
     boxShadow: scrolled 
       ? "0 10px 30px -10px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.02)" 
       : "0 1px 2px rgba(0,0,0,0.01)",
-    border: scrolled ? "1px solid var(--border-custom)" : "1px solid rgba(138, 148, 166, 0.08)",
+    border: scrolled ? "1px solid var(--border-custom)" : "1px solid rgba(138, 148, 166, 0.12)",
     transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
   }
-
-
 
   return (
     <div className="fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
@@ -41,42 +50,38 @@ export function MobileNav() {
         >
           {/* Logo - Far Left */}
           <Link href="/" className="flex items-center hover:opacity-85 transition-opacity" onClick={close}>
-            <span className="font-pixel text-[11px] font-bold tracking-[0.25em] text-text-heading">DEPLOYMO</span>
+            <span className="font-pixel text-xs font-bold tracking-[0.25em] text-text-heading">DEPLOYMO</span>
           </Link>
 
-          {/* Desktop Nav Items - Center - Single Line, Vertically Centered, Equal Spacing */}
+          {/* Desktop Nav Items */}
           <div 
-            className="hidden md:flex items-center gap-9" 
+            className="hidden md:flex items-center gap-8" 
             style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
           >
             {NAV_LINKS.map(l => (
               <Link
                 key={l.label}
                 href={l.href}
-                className="text-xs text-text-body/60 hover:text-text-heading dark:hover:text-text-heading transition-colors duration-200 tracking-wide font-medium"
+                className="text-xs text-text-body/70 hover:text-text-heading transition-colors duration-200 tracking-wide font-medium"
               >
                 {l.label}
               </Link>
             ))}
           </div>
 
-          {/* Desktop Call To Action - Far Right */}
+          {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            {themeToggleControl}
             <Link 
               href="/contact"
               className="text-xs font-semibold px-4 py-2.5 rounded-xl bg-text-heading text-bg-page hover:opacity-90 transition-all duration-200 tracking-wide"
               style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
             >
-              Request Quote
+              Get a Quote
             </Link>
           </div>
 
-          {/* Mobile hamburger navigation elements and theme toggle */}
+          {/* Mobile hamburger navigation */}
           <div className="flex items-center gap-1 md:hidden">
-            {themeToggleControl}
-            
-            {/* Burger Menu Button - Mobile Only */}
             <button
               onClick={() => setOpen(v => !v)}
               className="flex flex-col justify-center items-center w-11 h-11 gap-[5px] rounded-lg hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-colors"
@@ -112,7 +117,7 @@ export function MobileNav() {
         <div
           className="md:hidden mt-2 overflow-hidden transition-all duration-300 ease-in-out"
           style={{ 
-            maxHeight: open ? "340px" : "0px", 
+            maxHeight: open ? "280px" : "0px", 
             opacity: open ? 1 : 0,
             transform: open ? "translateY(0)" : "translateY(-4px)"
           }}
@@ -131,7 +136,7 @@ export function MobileNav() {
                 key={l.label}
                 href={l.href}
                 onClick={close}
-                className="px-4 py-3 text-[13px] text-text-body/60 dark:text-text-body/60 hover:text-text-heading dark:hover:text-text-heading hover:bg-black/[0.03] dark:hover:bg-white/[0.03] rounded-xl transition-colors tracking-wide font-medium"
+                className="px-4 py-3 text-[13px] text-text-body/70 hover:text-text-heading hover:bg-black/[0.03] dark:hover:bg-white/[0.03] rounded-xl transition-colors tracking-wide font-medium"
                 style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
               >
                 {l.label}
@@ -144,7 +149,7 @@ export function MobileNav() {
                 className="block w-full text-center text-xs font-semibold px-4 py-3 rounded-xl bg-text-heading text-bg-page hover:opacity-90 transition-all duration-200 tracking-wide"
                 style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
               >
-                Request Quote
+                Get a Quote
               </Link>
             </div>
           </div>
@@ -154,3 +159,4 @@ export function MobileNav() {
     </div>
   )
 }
+

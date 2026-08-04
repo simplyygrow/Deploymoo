@@ -5,77 +5,70 @@ import { useState, useEffect } from "react"
 const STEPS = [
   {
     num: "01",
-    title: "Install SDK",
-    desc: "One command to get started",
-    file: "terminal",
-    lang: "bash",
+    title: "Requirement Intake",
+    desc: "Define campaign scope & headcount",
+    file: "campaign_brief.json",
+    lang: "json",
     code: [
-      { type: "comment", text: "# Install the Agentic SDK" },
-      { type: "command", text: "npm install @agentic/sdk" },
+      { type: "comment", text: "// Project Requirement Matrix" },
+      { type: "command", text: "Deploymo Intake Protocol v2.4" },
       { type: "gap" },
-      { type: "comment", text: "# Initialize your project" },
-      { type: "command", text: "npx agentic init" },
+      { type: "prop", key: "  location", val: "'Mumbai, Navi Mumbai, Thane'" },
+      { type: "prop", key: "  manpowerType", val: "'Brand Promoters & Hostesses'" },
+      { type: "prop", key: "  campaignType", val: "'Product Launch & Retail Activation'" },
       { type: "gap" },
-      { type: "output", text: "✓ Project initialized" },
-      { type: "output", text: "✓ Config file created" },
-      { type: "output", text: "✓ Ready to build" },
+      { type: "output", text: "✓ Requirement Verified" },
+      { type: "output", text: "✓ Scope & Timeline Confirmed" },
     ],
   },
   {
     num: "02",
-    title: "Define Agent",
-    desc: "TypeScript-first agent class",
-    file: "agents/researcher.ts",
+    title: "Staff Screening",
+    desc: "Verification, grooming & briefing",
+    file: "manpower_allocation.ts",
     lang: "typescript",
     code: [
-      { type: "comment", text: "// agents/researcher.ts" },
-      { type: "keyword", text: "import", after: " { Agent, Tool } ", keyword2: "from", string: " '@agentic/sdk'" },
+      { type: "comment", text: "// Screening & Grooming Verification" },
+      { type: "keyword", text: "import", after: " { ScreenedStaff } ", keyword2: "from", string: " '@deploymo/manpower'" },
       { type: "gap" },
-      { type: "keyword", text: "const", after: " webSearch ", keyword2: "=", keyword3: " new ", fn: "Tool", args: "('web-search', async (q) => { ... })" },
-      { type: "gap" },
-      { type: "keyword", text: "export const", after: " researcher ", keyword2: "=", keyword3: " new ", fn: "Agent", args: "({" },
-      { type: "prop", key: "  name", val: "'researcher'" },
-      { type: "prop", key: "  model", val: "'claude-opus'" },
-      { type: "prop", key: "  tools", val: "[webSearch]" },
-      { type: "prop", key: "  memory", val: "true" },
+      { type: "keyword", text: "const", after: " promoterTeam ", keyword2: "=", keyword3: " new ", fn: "ManpowerPool", args: "({" },
+      { type: "prop", key: "  languageFluency", val: "'English, Hindi, Marathi'" },
+      { type: "prop", key: "  trainingStatus", val: "'Briefed on Product Pitch'" },
+      { type: "prop", key: "  dressCodeCompliance", val: "'Verified'" },
       { type: "plain", text: "});" },
     ],
   },
   {
     num: "03",
-    title: "Add Memory",
-    desc: "Persistent conversation context",
-    file: "agents/memory.ts",
+    title: "Field Deployment",
+    desc: "Punctual reporting & supervision",
+    file: "onground_operations.ts",
     lang: "typescript",
     code: [
-      { type: "comment", text: "// Add long-term memory to any agent" },
-      { type: "keyword", text: "import", after: " { VectorMemory } ", keyword2: "from", string: " '@agentic/memory'" },
+      { type: "comment", text: "// Real-Time Attendance & Location Tracking" },
+      { type: "keyword", text: "import", after: " { FieldSupervisor } ", keyword2: "from", string: " '@deploymo/ops'" },
       { type: "gap" },
-      { type: "keyword", text: "const", after: " memory ", keyword2: "=", keyword3: " new ", fn: "VectorMemory", args: "({" },
-      { type: "prop", key: "  provider", val: "'pgvector'" },
-      { type: "prop", key: "  namespace", val: "'researcher'" },
-      { type: "plain", text: "})" },
-      { type: "gap" },
-      { type: "comment", text: "// Attach to agent" },
-      { type: "plain", text: "researcher.use(memory)" },
+      { type: "keyword", text: "const", after: " executionUnit ", keyword2: "=", keyword3: " new ", fn: "FieldSupervisor", args: "({" },
+      { type: "prop", key: "  onTimeReporting", val: "'100% Punctuality Guaranteed'" },
+      { type: "prop", key: "  teamLeadersAssigned", val: "'Active Team Lead On-Site'" },
+      { type: "plain", text: "});" },
     ],
   },
   {
     num: "04",
-    title: "Deploy",
-    desc: "One command to production",
-    file: "terminal",
-    lang: "bash",
+    title: "Daily Reporting",
+    desc: "Footfall metrics & campaign data",
+    file: "campaign_summary.json",
+    lang: "json",
     code: [
-      { type: "comment", text: "# Deploy to Agentic Cloud" },
-      { type: "command", text: "agentic deploy --prod" },
+      { type: "comment", text: "// End of Day Campaign Dashboard" },
+      { type: "command", text: "Execution Insights Delivered" },
       { type: "gap" },
-      { type: "output", text: "  Building agent..." },
-      { type: "output", text: "  Running tests..." },
-      { type: "output", text: "  Deploying to edge..." },
+      { type: "output", text: "  Consolidating customer interactions..." },
+      { type: "output", text: "  Verifying attendance logs..." },
       { type: "gap" },
-      { type: "success", text: "✓ researcher deployed" },
-      { type: "url", text: "  → https://agents.agentic.dev/researcher" },
+      { type: "success", text: "✓ Daily Campaign Summary Delivered" },
+      { type: "url", text: "  → Direct Reporting to Brand Manager" },
     ],
   },
 ]
@@ -128,7 +121,6 @@ export function DevExSection() {
     }, 180)
   }
 
-  // Auto-advance every 3s
   useEffect(() => {
     const t = setInterval(() => {
       setVisible(false)
@@ -143,19 +135,18 @@ export function DevExSection() {
   const step = STEPS[active]
 
   return (
-    <section id="devex" className="py-32 px-6 md:px-12 lg:px-20 border-t border-border-custom">
+    <section id="devex" className="py-24 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
       <div className="max-w-6xl mx-auto">
         <div className="mb-16">
-          <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-text-body/5 border border-border-custom text-[10px] tracking-widest text-text-muted uppercase">
-            Developer Experience
+          <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-text-body/5 border border-border-custom text-[10px] tracking-widest text-text-muted uppercase font-mono">
+            Operational Excellence
           </div>
           <h2 className="mt-5 text-4xl md:text-5xl font-light tracking-tight leading-[1.05] text-text-heading">
-            Built for developers.<br />Loved by teams.
+            Structured Execution.<br />Flawless On-Ground Delivery.
           </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 items-stretch">
-          {/* Left — 4 clickable step cards, equal height, no flex stretch */}
           <div className="flex flex-col gap-3">
             {STEPS.map((s, i) => (
               <button
@@ -194,7 +185,6 @@ export function DevExSection() {
             ))}
           </div>
 
-          {/* Right — fixed-size code panel */}
           <div
             className="lg:col-span-2 rounded-2xl border border-border-custom p-8 flex flex-col"
             style={{
@@ -202,10 +192,9 @@ export function DevExSection() {
               minHeight: "360px",
             }}
           >
-            {/* Header */}
             <div className="flex items-center justify-between mb-5 shrink-0">
               <div
-                className="text-[10px] tracking-widest uppercase transition-all duration-200"
+                className="text-[10px] tracking-widest uppercase transition-all duration-200 font-mono"
                 style={{
                   opacity: visible ? 1 : 0,
                   filter: visible ? "blur(0px)" : "blur(4px)",
@@ -216,19 +205,18 @@ export function DevExSection() {
                 {step.file}
               </div>
               <div className="flex gap-1.5">
-                {[0, 1, 2].map(d => (
+                {[0, 1, 2, 3].map(d => (
                   <div
                     key={d}
                     className="w-2 h-2 rounded-full transition-all duration-300"
                     style={{
-                      background: d === active % 3 ? "var(--text-body)" : "var(--border-custom)",
+                      background: d === active ? "var(--text-heading)" : "var(--border-custom)",
                     }}
                   />
                 ))}
               </div>
             </div>
 
-            {/* Code block — fixed height, content doesn't affect layout */}
             <div className="flex-1 rounded-xl p-6 overflow-hidden" style={{ background: "var(--bg-page)", border: "1px solid var(--border-custom)" }}>
               <div
                 className="font-mono text-[12px] leading-6"
@@ -250,3 +238,4 @@ export function DevExSection() {
     </section>
   )
 }
+
