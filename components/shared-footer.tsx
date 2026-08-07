@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { BrandLogo } from '@/components/brand-logo';
 
 export function SharedFooter() {
   return (
@@ -8,7 +9,7 @@ export function SharedFooter() {
         
         {/* Brand & Tagline */}
         <div className="space-y-3 max-w-xs">
-          <span className="font-pixel text-xs tracking-[0.25em] text-text-heading font-bold">DEPLOYMO</span>
+          <BrandLogo />
           <p className="text-xs text-text-muted leading-relaxed">
             B2B Promotional Manpower & Event Staffing Agency serving Mumbai, Navi Mumbai, and Thane.
           </p>

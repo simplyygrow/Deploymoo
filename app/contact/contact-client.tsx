@@ -56,6 +56,37 @@ export default function ContactClient() {
   }
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+
+    const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeQ4K8C7APfJc1S2-sVs-cXYS1bwi65l0Ad6ckJh6IO1j4PmQ/formResponse";
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const params = new URLSearchParams();
+
+    for (const [key, value] of formData.entries()) {
+      params.append(key, value.toString());
+    }
+
+    try {
+      await fetch(GOOGLE_FORM_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: params.toString(),
+      });
+    } catch (err) {
+      console.error("Google form submission error:", err);
+    } finally {
+      setSubmitting(false);
+      setSubmitted(true);
+    }
+  };
 
   return (
     <div className="bg-bg-page text-text-body min-h-screen font-sans antialiased">
@@ -126,77 +157,77 @@ export default function ContactClient() {
                <BentoCard className="p-6 md:p-10 h-full" delay={120}>
                  <div className="text-xs font-mono text-text-muted tracking-widest uppercase mb-6">CAMPAIGN STAFFING QUOTE REQUEST</div>
                  {!submitted ? (
-                   <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="space-y-4">
+                   <form onSubmit={handleSubmit} className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Your Name</label>
-                            <input required type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="Rajesh Sharma" />
+                            <input required name="entry.177599544" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="Rajesh Sharma" />
                           </div>
                           <div>
                             <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Company / Agency Name</label>
-                            <input required type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="Brand Activations Pvt Ltd" />
+                            <input required name="entry.1501675554" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="Brand Activations Pvt Ltd" />
                           </div>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Work Email</label>
-                            <input required type="email" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="rajesh@agency.com" />
+                            <input required name="entry.599577987" type="email" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="rajesh@agency.com" />
                           </div>
                           <div>
                             <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Phone / Mobile</label>
-                            <input required type="tel" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="+91 98200 00000" />
+                            <input required name="entry.117751479" type="tel" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="+91 98200 00000" />
                           </div>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Primary Manpower Category</label>
-                            <select required className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading focus:outline-none focus:border-text-heading/30 transition-colors appearance-none">
+                            <select required name="entry.2076661831" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading focus:outline-none focus:border-text-heading/30 transition-colors appearance-none">
                               <option value="" className="bg-bg-card">Select category...</option>
-                              <option className="bg-bg-card">Brand Promoters</option>
-                              <option className="bg-bg-card">Sales Promoters</option>
-                              <option className="bg-bg-card">Product Sampling Staff</option>
-                              <option className="bg-bg-card">Event Hostesses & Ushers</option>
-                              <option className="bg-bg-card">Exhibition & Registration Staff</option>
-                              <option className="bg-bg-card">Field Supervisors & Team Leaders</option>
-                              <option className="bg-bg-card">Mystery Shoppers & Audit Staff</option>
-                              <option className="bg-bg-card">In-Store & Mall Promoters</option>
+                              <option value="Brand Promoters" className="bg-bg-card">Brand Promoters</option>
+                              <option value="Sales Promoters" className="bg-bg-card">Sales Promoters</option>
+                              <option value="Product Sampling Staff" className="bg-bg-card">Product Sampling Staff</option>
+                              <option value="Event Hostesses & Ushers" className="bg-bg-card">Event Hostesses & Ushers</option>
+                              <option value="Exhibition & Registration Staff" className="bg-bg-card">Exhibition & Registration Staff</option>
+                              <option value="Field Supervisors & Team Leaders" className="bg-bg-card">Field Supervisors & Team Leaders</option>
+                              <option value="Mystery Shoppers & Audit Staff" className="bg-bg-card">Mystery Shoppers & Audit Staff</option>
+                              <option value="In-Store & Mall Promoters" className="bg-bg-card">In-Store & Mall Promoters</option>
                             </select>
                           </div>
                           <div>
                              <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Staff Count Required</label>
-                             <input required type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="e.g. 5 Promoters, 1 Supervisor" />
+                             <input required name="entry.4859723" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="e.g. 5 Promoters, 1 Supervisor" />
                           </div>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                              <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Location(s)</label>
-                             <select required className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading focus:outline-none focus:border-text-heading/30 transition-colors appearance-none">
+                             <select required name="entry.158642125" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading focus:outline-none focus:border-text-heading/30 transition-colors appearance-none">
                                <option value="" className="bg-bg-card">Select region...</option>
-                               <option className="bg-bg-card">Mumbai Metro (Andheri, BKC, Bandra, Powai, etc.)</option>
-                               <option className="bg-bg-card">Navi Mumbai (Vashi, Nerul, Belapur, etc.)</option>
-                               <option className="bg-bg-card">Thane West & Surrounds</option>
-                               <option className="bg-bg-card">Multi-Location (Mumbai + Navi Mumbai + Thane)</option>
+                               <option value="Mumbai Metro (Andheri, BKC, Bandra, Powai, etc.)" className="bg-bg-card">Mumbai Metro (Andheri, BKC, Bandra, Powai, etc.)</option>
+                               <option value="Navi Mumbai (Vashi, Nerul, Belapur, etc.)" className="bg-bg-card">Navi Mumbai (Vashi, Nerul, Belapur, etc.)</option>
+                               <option value="Thane West & Surrounds" className="bg-bg-card">Thane West & Surrounds</option>
+                               <option value="Multi-Location (Mumbai + Navi Mumbai + Thane)" className="bg-bg-card">Multi-Location (Mumbai + Navi Mumbai + Thane)</option>
                              </select>
                           </div>
                           <div>
                              <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Campaign Duration / Dates</label>
-                             <input required type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="e.g. 3 Days (Oct 15 - Oct 17)" />
+                             <input required name="entry.1369539899" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="e.g. 3 Days (Oct 15 - Oct 17)" />
                           </div>
                       </div>
 
                       <div className="space-y-4 pt-2">
                           <div>
                              <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Campaign Brief & Requirements</label>
-                             <textarea required className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors min-h-[80px]" placeholder="Describe the activation, target pitch, working hours, and profile requirements..."></textarea>
+                             <textarea required name="entry.950539141" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors min-h-[80px]" placeholder="Describe the activation, target pitch, working hours, and profile requirements..."></textarea>
                           </div>
                       </div>
 
                       <div className="pt-4">
-                         <button type="submit" className="w-full sm:w-auto px-8 py-3.5 bg-text-heading text-bg-page text-xs tracking-widest rounded-xl hover:opacity-90 transition-colors uppercase font-semibold cursor-pointer">
-                           Submit Quote Request
+                         <button disabled={submitting} type="submit" className="w-full sm:w-auto px-8 py-3.5 bg-text-heading text-bg-page text-xs tracking-widest rounded-xl hover:opacity-90 transition-colors uppercase font-semibold cursor-pointer disabled:opacity-50">
+                           {submitting ? "Submitting..." : "Submit Quote Request"}
                          </button>
                       </div>
                    </form>

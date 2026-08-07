@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { BrandLogo } from "@/components/brand-logo"
 
 const NAV_LINKS = [
   { label: "Home",     href: "/" },
@@ -49,9 +50,7 @@ export function MobileNav() {
           style={navContainerStyle}
         >
           {/* Logo - Far Left */}
-          <Link href="/" className="flex items-center hover:opacity-85 transition-opacity" onClick={close}>
-            <span className="font-pixel text-xs font-bold tracking-[0.25em] text-text-heading">DEPLOYMO</span>
-          </Link>
+          <BrandLogo onClick={close} />
 
           {/* Desktop Nav Items */}
           <div 
