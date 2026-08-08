@@ -8,28 +8,28 @@ const STAFFING_CATEGORIES = [
     title: "Brand Promoters & Ambassadors",
     desc: "Articulate, trained brand ambassadors and promoters who represent your brand vision during activations, product launches, and high-visibility campaigns.",
     stats: [{ v: "Mumbai Wide", l: "coverage" }, { v: "Short / Long Term", l: "contracts" }],
-    img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/researcher-CvhqOuV6irGwBOnJoTGFlXdbyYBRjb.png",
+    img: "/images/category-brand-promoters.jpeg",
   },
   {
     label: "SALES & RETAIL PROMOTERS",
     title: "In-Store & Retail Promoters",
     desc: "Active sales promoters deployed across modern trade, retail outlets, and malls to drive footfall conversion and boost product trials.",
     stats: [{ v: "Trained", l: "pitching" }, { v: "High Impact", l: "conversions" }],
-    img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/coder-9bItvCegU6TXUqbX3tUXGBAtvkBkXp.png",
+    img: "/images/category-sales-promoters.jpeg",
   },
   {
     label: "SAMPLING & FIELD EXEC",
     title: "Product Sampling & Field Staff",
     desc: "Dynamic teams for product sampling, society activations, mall promotions, and roadshows targeting key consumer segments.",
     stats: [{ v: "Rapid", l: "deployment" }, { v: "Supervised", l: "execution" }],
-    img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/analyst-Ysxnqg7Fpy2cfA56PiIttv1KximMhT.png",
+    img: "/images/category-sampling-staff.jpeg",
   },
   {
     label: "EVENT & EXHIBITION",
     title: "Hostesses, Registration & Event Staff",
     desc: "Professional hostesses, registration coordinators, ushers, exhibition promoters, and team leaders for corporate events and trade shows.",
     stats: [{ v: "Professional", l: "grooming" }, { v: "Turnkey", l: "coordination" }],
-    img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/executor-o1q6509qMLXMtpBIGo49vcgOu34sI1.png",
+    img: "/images/category-event-hostesses.jpeg",
   },
 ]
 

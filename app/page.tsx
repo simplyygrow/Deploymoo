@@ -188,13 +188,12 @@ export default function DeploymoHomePage() {
           </div>
 
           <div className="grid grid-cols-12 grid-rows-auto gap-3" onMouseMove={handleMouse}>
-            <BentoCard className="col-span-12 p-8 min-h-[220px] flex flex-col justify-between relative overflow-hidden" delay={0}>
+            <BentoCard className="col-span-12 p-8 min-h-[260px] flex flex-col justify-between relative overflow-hidden" delay={0}>
               <img
-                src="/images/arc.png"
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{ objectPosition: "center 70%" }}
+                src="/images/home-hero.jpeg"
+                alt="Deploymo Managed Field Manpower"
+                className="absolute inset-0 w-full h-full object-cover opacity-40 dark:opacity-30"
+                style={{ objectPosition: "center 30%" }}
               />
               <div className="absolute inset-0" style={{
                 maskImage: "linear-gradient(to bottom, transparent 45%, black 100%)",
@@ -275,10 +274,10 @@ export default function DeploymoHomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-3" onMouseMove={handleMouse}>
             {[
-              { n: "01", title: "Share Brief", desc: "Submit project dates, location (Mumbai/Navi Mumbai/Thane), headcount required, and profile specs.", delay: 0, img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/define-5aafAmGBrxZpOqJ3XLHY3n3qzC2I5K.png" },
-              { n: "02", title: "Staff Shortlisting", desc: "We screen and select appropriate promoters, hostesses, or field staff from our verified database.", delay: 80, img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/compose-5RT5VR4f1Y3GoFmovqTKLTG4UXp3g2.png" },
-              { n: "03", title: "Briefing & Check", desc: "Staff are briefed on product messaging, dress codes, and operational targets prior to deployment.", delay: 140, img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/test-zm8guZwxJHtwWsJ7XO4B0CF7GzlNK8.png" },
-              { n: "04", title: "Field Execution", desc: "Supervised on-ground deployment with real-time reporting and attendance verification.", delay: 200, img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/deploy-an8fgHSLzniojkcmRyGGIFQUJF9T5J.png" },
+              { n: "01", title: "Share Brief", desc: "Submit project dates, location (Mumbai/Navi Mumbai/Thane), headcount required, and profile specs.", delay: 0, img: "/images/process-share-brief.jpeg" },
+              { n: "02", title: "Staff Shortlisting", desc: "We screen and select appropriate promoters, hostesses, or field staff from our verified database.", delay: 80, img: "/images/process-staff-shortlisting.jpeg" },
+              { n: "03", title: "Briefing & Check", desc: "Staff are briefed on product messaging, dress codes, and operational targets prior to deployment.", delay: 140, img: "/images/process-briefing-check.jpeg" },
+              { n: "04", title: "Field Execution", desc: "Supervised on-ground deployment with real-time reporting and attendance verification.", delay: 200, img: "/images/process-field-execution.jpeg" },
             ].map((step) => (
               <BentoCard key={step.n} className="relative overflow-hidden flex flex-col min-h-[320px]" delay={step.delay}>
                 <div className="absolute inset-x-0 top-0 h-56 pointer-events-none">
