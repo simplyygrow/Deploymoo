@@ -93,15 +93,13 @@ export default function DeploymoHomePage() {
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section className="relative h-screen overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0 opacity-40 dark:opacity-30"
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/agentic-hero-9yW3wnTNMfn2U6lsVhTTZSJFEvAoSj.mp4"
+        <img
+          src="/images/home-hero.jpeg"
+          alt="Deploymo Promoters Studio"
+          className="absolute inset-0 w-full h-full object-cover z-0 opacity-50 dark:opacity-40"
           style={{
-            transform: videoZoomDone ? "scale(1)" : "scale(1.1)",
+            objectPosition: "center 30%",
+            transform: videoZoomDone ? "scale(1)" : "scale(1.08)",
             transition: videoZoomDone ? "transform 4s cubic-bezier(0.25, 0.46, 0.45, 0.94)" : "none",
           }}
         />
