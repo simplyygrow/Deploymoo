@@ -192,7 +192,7 @@ export default function DeploymoHomePage() {
           <div className="grid grid-cols-12 grid-rows-auto gap-3" onMouseMove={handleMouse}>
             <BentoCard className="col-span-12 p-8 min-h-[260px] flex flex-col justify-between relative overflow-hidden" delay={0}>
               <img
-                src="/images/home-hero.jpeg"
+                src="/images/managed-field-manpower.jpeg"
                 alt="Deploymo managed field manpower - supervised brand promoters and event staff across Mumbai"
                 className="absolute inset-0 w-full h-full object-cover opacity-40 dark:opacity-30"
                 style={{ objectPosition: "center 30%" }}
