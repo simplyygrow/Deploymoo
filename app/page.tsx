@@ -190,20 +190,7 @@ export default function DeploymoHomePage() {
           </div>
 
           <div className="grid grid-cols-12 grid-rows-auto gap-3" onMouseMove={handleMouse}>
-            <BentoCard className="col-span-12 p-8 min-h-[260px] flex flex-col justify-between relative overflow-hidden" delay={0}>
-              <img
-                src="/images/managed-field-manpower.jpeg"
-                alt="Deploymo managed field manpower - supervised brand promoters and event staff across Mumbai"
-                className="absolute inset-0 w-full h-full object-cover opacity-40 dark:opacity-30"
-                style={{ objectPosition: "center 30%" }}
-              />
-              <div className="absolute inset-0" style={{
-                maskImage: "linear-gradient(to bottom, transparent 45%, black 100%)",
-                WebkitMaskImage: "linear-gradient(to bottom, transparent 45%, black 100%)",
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
-              }} />
-              <div className="absolute inset-0 bento-fade-gradient" />
+            <BentoCard className="col-span-12 p-8 min-h-[200px] flex flex-col justify-between relative overflow-hidden" delay={0}>
 
               <div className="relative z-10">
                 <div className="w-10 h-10 rounded-xl border border-border-custom bg-bg-card/60 flex items-center justify-center mb-6" style={{ backdropFilter: "blur(8px)" }}>
