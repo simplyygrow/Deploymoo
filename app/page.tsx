@@ -10,6 +10,7 @@ import { MobileNav } from "@/components/mobile-nav"
 import { DevExSection } from "@/components/devex-section"
 import { SharedFooter } from "@/components/shared-footer"
 import { SharedCta } from "@/components/shared-cta"
+import { HomepageSchemas } from "@/components/homepage-schemas"
 import Link from "next/link"
 
 // ─── Intersection Observer hook ──────────────────────────────────────────────
@@ -83,7 +84,8 @@ export default function DeploymoHomePage() {
   }
 
   return (
-    <div className="bg-bg-page text-text-body min-h-screen font-sans antialiased">
+    <main className="bg-bg-page text-text-body min-h-screen font-sans antialiased" role="main">
+      <HomepageSchemas />
 
       {/* ── INTRO ANIMATION ───────────────────────────────────────────────── */}
       <IntroAnimation onDone={handleIntroDone} />
@@ -92,11 +94,13 @@ export default function DeploymoHomePage() {
       <MobileNav />
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="relative h-screen overflow-hidden">
+      <section className="relative h-screen overflow-hidden" aria-label="Hero - Deploymo Promotional Staffing Agency Mumbai">
         <img
           src="/images/home-hero.jpeg"
-          alt="Deploymo Promoters Studio"
+          alt="Deploymo professional promotional staffing team in Mumbai - trained brand promoters, event hostesses and field staff ready for deployment"
           className="absolute inset-0 w-full h-full object-cover z-0 opacity-50 dark:opacity-40"
+          loading="eager"
+          fetchPriority="high"
           style={{
             objectPosition: "center 30%",
             transform: videoZoomDone ? "scale(1)" : "scale(1.08)",
@@ -175,7 +179,7 @@ export default function DeploymoHomePage() {
       </section>
 
       {/* ── PLATFORM OVERVIEW (bento) ──────────────────────────────────────── */}
-      <section id="platform" className="py-16 px-6 md:py-32 md:px-12 lg:px-20">
+      <section id="platform" className="py-16 px-6 md:py-32 md:px-12 lg:px-20" aria-label="Why Choose Deploymo - Platform Overview">
         <div className="max-w-6xl mx-auto">
           <div className="mb-16">
             <PixelIcon type="platform" size={40} />
@@ -189,7 +193,7 @@ export default function DeploymoHomePage() {
             <BentoCard className="col-span-12 p-8 min-h-[260px] flex flex-col justify-between relative overflow-hidden" delay={0}>
               <img
                 src="/images/home-hero.jpeg"
-                alt="Deploymo Managed Field Manpower"
+                alt="Deploymo managed field manpower - supervised brand promoters and event staff across Mumbai"
                 className="absolute inset-0 w-full h-full object-cover opacity-40 dark:opacity-30"
                 style={{ objectPosition: "center 30%" }}
               />
@@ -240,7 +244,7 @@ export default function DeploymoHomePage() {
       </section>
 
       {/* ── STAFFING CATEGORIES ───────────────────────────────────────────── */}
-      <section id="agents" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
+      <section id="agents" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom" aria-label="Manpower Categories - Specialized Promotional Staff">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
             <div>
@@ -260,7 +264,7 @@ export default function DeploymoHomePage() {
       </section>
 
       {/* ── HOW IT WORKS ──────────────────────────────────────────────────── */}
-      <section id="workflow" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom overflow-hidden">
+      <section id="workflow" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom overflow-hidden" aria-label="How It Works - Campaign to Deployment Process">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <PixelIcon type="workflow" size={40} />
@@ -303,7 +307,7 @@ export default function DeploymoHomePage() {
       </section>
 
       {/* ── CORE SERVICES & SERVICE SCOPE EXCLUSION ────────────────────────── */}
-      <section id="services" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
+      <section id="services" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom" aria-label="15 Specialized Promotional and Event Staffing Services">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <PixelIcon type="integrations" size={40} />
@@ -377,7 +381,7 @@ export default function DeploymoHomePage() {
       </section>
 
       {/* ── LIVE DEPLOYMENT FEED ───────────────────────────────────────────── */}
-      <section id="live" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
+      <section id="live" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom" aria-label="Live Deployment Feed - Active Field Teams in Mumbai">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
@@ -402,7 +406,7 @@ export default function DeploymoHomePage() {
       </section>
 
       {/* ── FAQ & ENQUIRY PREPARATION ──────────────────────────────────────── */}
-      <section id="faq" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom">
+      <section id="faq" className="py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom" aria-label="Frequently Asked Questions About Deploymo Staffing Services">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16 flex flex-col items-center">
             <PixelIcon type="pricing" size={40} />
@@ -449,6 +453,6 @@ export default function DeploymoHomePage() {
 
       {/* ── FOOTER ────────────────────────────────────────────────────────── */}
       <SharedFooter />
-    </div>
+    </main>
   )
 }

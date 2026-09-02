@@ -71,11 +71,21 @@ export const metadata: Metadata = {
     url: 'https://deploymo.com',
     siteName: 'Deploymo',
     locale: 'en_IN',
+    images: [
+      {
+        url: 'https://deploymo.com/images/home-hero.jpeg',
+        width: 1200,
+        height: 630,
+        alt: 'Deploymo - Professional Promotional Staffing Team Mumbai',
+        type: 'image/jpeg',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Promotional Manpower & Event Staffing Agency Mumbai | Deploymo',
     description: 'Deploy trained promoters, brand ambassadors, hostesses, exhibition staff and event professionals quickly across Mumbai, Navi Mumbai, and Thane.',
+    images: ['https://deploymo.com/images/home-hero.jpeg'],
   },
   icons: {
     icon: [
@@ -109,14 +119,37 @@ const jsonLdSchema = {
       "@id": "https://deploymo.com/#organization",
       "name": "Deploymo",
       "url": "https://deploymo.com",
-      "logo": "https://deploymo.com/icon.svg",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://deploymo.com/icon.svg",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://deploymo.com/images/home-hero.jpeg",
       "email": "info@deploymo.com",
       "telephone": "+91-6261652749",
-      "description": "B2B Promotional Manpower & Event Staffing Agency in Mumbai, Navi Mumbai, and Thane.",
+      "description": "B2B Promotional Manpower & Event Staffing Agency in Mumbai, Navi Mumbai, and Thane. We deploy trained brand promoters, sales promoters, hostesses, exhibition staff, and event manpower.",
+      "foundingDate": "2023",
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "minValue": 50,
+        "maxValue": 200
+      },
       "areaServed": [
         { "@type": "City", "name": "Mumbai" },
         { "@type": "City", "name": "Navi Mumbai" },
         { "@type": "City", "name": "Thane" }
+      ],
+      "knowsAbout": [
+        "Promotional Staffing",
+        "Event Manpower",
+        "Brand Promoters",
+        "Sales Promoters",
+        "Product Sampling",
+        "Exhibition Staffing",
+        "Mall Activations",
+        "Roadshow Staffing",
+        "Corporate Event Staffing"
       ],
       "sameAs": [
         "https://www.instagram.com/deploy.mo",
@@ -125,14 +158,16 @@ const jsonLdSchema = {
       ]
     },
     {
-      "@type": "LocalBusiness",
+      "@type": ["LocalBusiness", "ProfessionalService"],
       "@id": "https://deploymo.com/#localbusiness",
       "name": "Deploymo Promotional Manpower & Event Staffing",
-      "image": "https://deploymo.com/icon.svg",
+      "image": "https://deploymo.com/images/home-hero.jpeg",
       "url": "https://deploymo.com",
       "telephone": "+91-6261652749",
       "email": "info@deploymo.com",
       "priceRange": "₹₹",
+      "currenciesAccepted": "INR",
+      "paymentAccepted": "Cash, Bank Transfer, UPI",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Off Juhu Circle, New Link Road, Opp. The Club New D.N. Nagar, Andheri West",
@@ -152,14 +187,51 @@ const jsonLdSchema = {
         "opens": "09:00",
         "closes": "19:00"
       },
-      "areaServed": ["Mumbai", "Navi Mumbai", "Thane", "Andheri", "Bandra", "Powai", "Lower Parel", "BKC", "Goregaon", "Borivali", "Malad", "Vashi", "Nerul", "Airoli", "Thane West"]
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "47",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Promotional Staffing Services",
+        "itemListElement": [
+          { "@type": "OfferCatalog", "name": "Brand Promoters" },
+          { "@type": "OfferCatalog", "name": "Sales Promoters" },
+          { "@type": "OfferCatalog", "name": "Event Hostesses" },
+          { "@type": "OfferCatalog", "name": "Product Sampling Staff" },
+          { "@type": "OfferCatalog", "name": "Exhibition Staff" },
+          { "@type": "OfferCatalog", "name": "Mall Promoters" },
+          { "@type": "OfferCatalog", "name": "Roadshow Staff" },
+          { "@type": "OfferCatalog", "name": "Registration Staff" },
+          { "@type": "OfferCatalog", "name": "Ushering Staff" },
+          { "@type": "OfferCatalog", "name": "Field Supervisors" }
+        ]
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Mumbai", "sameAs": "https://en.wikipedia.org/wiki/Mumbai" },
+        { "@type": "City", "name": "Navi Mumbai", "sameAs": "https://en.wikipedia.org/wiki/Navi_Mumbai" },
+        { "@type": "City", "name": "Thane", "sameAs": "https://en.wikipedia.org/wiki/Thane" }
+      ]
     },
     {
       "@type": "WebSite",
       "@id": "https://deploymo.com/#website",
       "url": "https://deploymo.com",
       "name": "Deploymo",
-      "publisher": { "@id": "https://deploymo.com/#organization" }
+      "description": "Professional promotional manpower and event staffing agency serving Mumbai, Navi Mumbai, and Thane.",
+      "publisher": { "@id": "https://deploymo.com/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://deploymo.com/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      },
+      "inLanguage": "en-IN"
     }
   ]
 }
