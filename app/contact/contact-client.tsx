@@ -147,7 +147,7 @@ export default function ContactClient() {
                 <div className="flex flex-wrap gap-4">
                   <a href="https://wa.me/message/4ZTBQI5MAZ6UP1" target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-text-heading hover:text-emerald-500 transition-colors underline underline-offset-4">WhatsApp Direct →</a>
                   <a href="https://www.instagram.com/deploy.mo" target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-text-heading hover:text-emerald-500 transition-colors underline underline-offset-4">Instagram</a>
-                  <a href="https://www.linkedin.com/company/deploymo" target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-text-heading hover:text-emerald-500 transition-colors underline underline-offset-4">LinkedIn</a>
+                  <a href="https://www.linkedin.com/company/workneed/" target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-text-heading hover:text-emerald-500 transition-colors underline underline-offset-4">LinkedIn</a>
                 </div>
               </BentoCard>
             </div>

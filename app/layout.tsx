@@ -155,7 +155,7 @@ const jsonLdSchema = {
       ],
       "sameAs": [
         "https://www.instagram.com/deploy.mo",
-        "https://www.linkedin.com/company/deploymo",
+        "https://www.linkedin.com/company/workneed/",
         "https://wa.me/message/4ZTBQI5MAZ6UP1"
       ]
     },
