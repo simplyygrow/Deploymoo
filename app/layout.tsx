@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, IBM_Plex_Sans, Courier_Prime } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { GoogleAnalytics } from '@/components/google-analytics'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -60,7 +61,7 @@ export const metadata: Metadata = {
     'Thane West'
   ],
   authors: [{ name: 'Deploymo' }],
-  metadataBase: new URL('https://deploymo.com'),
+  metadataBase: new URL('https://www.deploymo.com'),
   alternates: {
     canonical: '/',
   },
@@ -68,12 +69,12 @@ export const metadata: Metadata = {
     title: 'Promotional Manpower & Event Staffing Agency Mumbai | Deploymo',
     description: 'Deploy trained promoters, brand ambassadors, hostesses, exhibition staff and event professionals quickly across Mumbai, Navi Mumbai, and Thane.',
     type: 'website',
-    url: 'https://deploymo.com',
+    url: 'https://www.deploymo.com',
     siteName: 'Deploymo',
     locale: 'en_IN',
     images: [
       {
-        url: 'https://deploymo.com/images/home-hero.jpeg',
+        url: 'https://www.deploymo.com/images/home-hero.jpeg',
         width: 1200,
         height: 630,
         alt: 'Deploymo - Professional Promotional Staffing Team Mumbai',
@@ -85,7 +86,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Promotional Manpower & Event Staffing Agency Mumbai | Deploymo',
     description: 'Deploy trained promoters, brand ambassadors, hostesses, exhibition staff and event professionals quickly across Mumbai, Navi Mumbai, and Thane.',
-    images: ['https://deploymo.com/images/home-hero.jpeg'],
+    images: ['https://www.deploymo.com/images/home-hero.jpeg'],
   },
   icons: {
     icon: [
@@ -116,16 +117,16 @@ const jsonLdSchema = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://deploymo.com/#organization",
+      "@id": "https://www.deploymo.com/#organization",
       "name": "Deploymo",
-      "url": "https://deploymo.com",
+      "url": "https://www.deploymo.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://deploymo.com/icon.svg",
+        "url": "https://www.deploymo.com/icon.svg",
         "width": 512,
         "height": 512
       },
-      "image": "https://deploymo.com/images/home-hero.jpeg",
+      "image": "https://www.deploymo.com/images/home-hero.jpeg",
       "email": "info@deploymo.com",
       "telephone": "+91-6261652749",
       "description": "B2B Promotional Manpower & Event Staffing Agency in Mumbai, Navi Mumbai, and Thane. We deploy trained brand promoters, sales promoters, hostesses, exhibition staff, and event manpower.",
@@ -159,10 +160,10 @@ const jsonLdSchema = {
     },
     {
       "@type": ["LocalBusiness", "ProfessionalService"],
-      "@id": "https://deploymo.com/#localbusiness",
+      "@id": "https://www.deploymo.com/#localbusiness",
       "name": "Deploymo Promotional Manpower & Event Staffing",
-      "image": "https://deploymo.com/images/home-hero.jpeg",
-      "url": "https://deploymo.com",
+      "image": "https://www.deploymo.com/images/home-hero.jpeg",
+      "url": "https://www.deploymo.com",
       "telephone": "+91-6261652749",
       "email": "info@deploymo.com",
       "priceRange": "₹₹",
@@ -218,16 +219,16 @@ const jsonLdSchema = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://deploymo.com/#website",
-      "url": "https://deploymo.com",
+      "@id": "https://www.deploymo.com/#website",
+      "url": "https://www.deploymo.com",
       "name": "Deploymo",
       "description": "Professional promotional manpower and event staffing agency serving Mumbai, Navi Mumbai, and Thane.",
-      "publisher": { "@id": "https://deploymo.com/#organization" },
+      "publisher": { "@id": "https://www.deploymo.com/#organization" },
       "potentialAction": {
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://deploymo.com/?q={search_term_string}"
+          "urlTemplate": "https://www.deploymo.com/?q={search_term_string}"
         },
         "query-input": "required name=search_term_string"
       },
@@ -252,6 +253,7 @@ export default function RootLayout({
       <body className={`font-sans antialiased theme-transition`}>
         {children}
         <Analytics />
+        <GoogleAnalytics />
       </body>
     </html>
   )

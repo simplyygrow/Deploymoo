@@ -1,0 +1,59 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "deploymoo.vercel.app"
+        }
+      ],
+      "destination": "https://www.deploymo.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "deploymo.vercel.app"
+        }
+      ],
+      "destination": "https://www.deploymo.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "deploymo.com"
+        }
+      ],
+      "destination": "https://www.deploymo.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "deploymoo.com"
+        }
+      ],
+      "destination": "https://www.deploymo.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.deploymoo.com"
+        }
+      ],
+      "destination": "https://www.deploymo.com/:path*",
+      "permanent": true
+    }
+  ]
+}

@@ -10,8 +10,8 @@ export const metadata = {
   openGraph: {
     title: 'Field Marketing, Promoter, Event & Brand Activation Services | Deploymo',
     description: 'Managed on-ground teams for field marketing, promoter staffing, event staffing, brand activation, retail audits and field surveys across Mumbai, Navi Mumbai, and Thane.',
-    url: 'https://deploymo.com/services',
-    images: [{ url: 'https://deploymo.com/images/home-hero.jpeg', width: 1200, height: 630, alt: 'Deploymo Services' }],
+    url: 'https://www.deploymo.com/services',
+    images: [{ url: 'https://www.deploymo.com/images/home-hero.jpeg', width: 1200, height: 630, alt: 'Deploymo Services' }],
   },
 }
 

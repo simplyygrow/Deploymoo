@@ -17,7 +17,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/images/',
       },
     ],
-    sitemap: 'https://deploymo.com/sitemap.xml',
-    host: 'https://deploymo.com',
+    sitemap: 'https://www.deploymo.com/sitemap.xml',
+    host: 'https://www.deploymo.com',
   }
 }

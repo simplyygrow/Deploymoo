@@ -15,3 +15,8 @@ node_modules
 .next/
 .DS_Store
 .vercel
+
+# Agent/tooling artifacts (not part of the website)
+.opencode/
+awesome-design-md/
+graphify-out/

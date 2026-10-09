@@ -9,8 +9,8 @@ export const metadata = {
   openGraph: {
     title: 'About Deploymo | Managed Field Execution Partner India',
     description: 'Deploymo is a managed field-execution company deploying on-ground teams for field marketing, events, promotions and retail projects across India — not a recruitment agency.',
-    url: 'https://deploymo.com/about',
-    images: [{ url: 'https://deploymo.com/images/home-hero.jpeg', width: 1200, height: 630, alt: 'About Deploymo' }],
+    url: 'https://www.deploymo.com/about',
+    images: [{ url: 'https://www.deploymo.com/images/home-hero.jpeg', width: 1200, height: 630, alt: 'About Deploymo' }],
   },
 }
 

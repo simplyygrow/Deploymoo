@@ -9,8 +9,8 @@ export const metadata = {
   openGraph: {
     title: 'Contact Deploymo | Request a Deployment Quote',
     description: 'Get in touch with Deploymo to discuss your field marketing, promoter, event staffing or brand activation project in Mumbai.',
-    url: 'https://deploymo.com/contact',
-    images: [{ url: 'https://deploymo.com/images/home-hero.jpeg', width: 1200, height: 630, alt: 'Contact Deploymo' }],
+    url: 'https://www.deploymo.com/contact',
+    images: [{ url: 'https://www.deploymo.com/images/home-hero.jpeg', width: 1200, height: 630, alt: 'Contact Deploymo' }],
   },
 }
 

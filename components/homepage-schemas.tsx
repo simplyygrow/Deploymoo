@@ -60,13 +60,13 @@ const serviceSchema = {
         "@type": "Service",
         "name": "Brand Promoters Mumbai",
         "description": "Trained brand promoters for product launches, retail activations, and promotional campaigns across Mumbai, Navi Mumbai, and Thane.",
-        "provider": { "@id": "https://deploymo.com/#organization" },
+        "provider": { "@id": "https://www.deploymo.com/#organization" },
         "areaServed": [
           { "@type": "City", "name": "Mumbai" },
           { "@type": "City", "name": "Navi Mumbai" },
           { "@type": "City", "name": "Thane" }
         ],
-        "url": "https://deploymo.com/services"
+        "url": "https://www.deploymo.com/services"
       }
     },
     {
@@ -76,13 +76,13 @@ const serviceSchema = {
         "@type": "Service",
         "name": "Event Hostesses Mumbai",
         "description": "Professional event hostesses and registration staff for corporate events, exhibitions, trade shows, and conferences in Mumbai.",
-        "provider": { "@id": "https://deploymo.com/#organization" },
+        "provider": { "@id": "https://www.deploymo.com/#organization" },
         "areaServed": [
           { "@type": "City", "name": "Mumbai" },
           { "@type": "City", "name": "Navi Mumbai" },
           { "@type": "City", "name": "Thane" }
         ],
-        "url": "https://deploymo.com/services"
+        "url": "https://www.deploymo.com/services"
       }
     },
     {
@@ -92,13 +92,13 @@ const serviceSchema = {
         "@type": "Service",
         "name": "Product Sampling Staff Mumbai",
         "description": "Experienced product sampling teams for in-store demos, mall activations, and retail sampling campaigns across Mumbai region.",
-        "provider": { "@id": "https://deploymo.com/#organization" },
+        "provider": { "@id": "https://www.deploymo.com/#organization" },
         "areaServed": [
           { "@type": "City", "name": "Mumbai" },
           { "@type": "City", "name": "Navi Mumbai" },
           { "@type": "City", "name": "Thane" }
         ],
-        "url": "https://deploymo.com/services"
+        "url": "https://www.deploymo.com/services"
       }
     },
     {
@@ -108,13 +108,13 @@ const serviceSchema = {
         "@type": "Service",
         "name": "Exhibition Staff Mumbai",
         "description": "Dedicated exhibition staff, booth operators, and registration personnel for trade shows, expos, and corporate exhibitions.",
-        "provider": { "@id": "https://deploymo.com/#organization" },
+        "provider": { "@id": "https://www.deploymo.com/#organization" },
         "areaServed": [
           { "@type": "City", "name": "Mumbai" },
           { "@type": "City", "name": "Navi Mumbai" },
           { "@type": "City", "name": "Thane" }
         ],
-        "url": "https://deploymo.com/services"
+        "url": "https://www.deploymo.com/services"
       }
     },
     {
@@ -124,13 +124,13 @@ const serviceSchema = {
         "@type": "Service",
         "name": "Mall Promoters & Roadshow Staff Mumbai",
         "description": "Mall activation promoters and roadshow execution teams for high-footfall retail marketing campaigns across Mumbai, Navi Mumbai, and Thane.",
-        "provider": { "@id": "https://deploymo.com/#organization" },
+        "provider": { "@id": "https://www.deploymo.com/#organization" },
         "areaServed": [
           { "@type": "City", "name": "Mumbai" },
           { "@type": "City", "name": "Navi Mumbai" },
           { "@type": "City", "name": "Thane" }
         ],
-        "url": "https://deploymo.com/services"
+        "url": "https://www.deploymo.com/services"
       }
     }
   ]
@@ -144,7 +144,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://deploymo.com"
+      "item": "https://www.deploymo.com"
     }
   ]
 }
