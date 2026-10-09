@@ -56,36 +56,33 @@ export default function ContactClient() {
   }
 
   const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  // Public responder (/viewform) link for the Deploymo quote-request Google Form.
+  // Only this public URL is used — the private /edit URL is never exposed.
+  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe-p2_9Cky7Ef2C-UZ19e-TvqesKPi8LkqarUnYo6K65C8Hhw/viewform";
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitting(true);
 
-    const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeQ4K8C7APfJc1S2-sVs-cXYS1bwi65l0Ad6ckJh6IO1j4PmQ/formResponse";
-    const form = e.currentTarget;
-    const formData = new FormData(form);
+    // Carry the visitor's answers over to the Google Form via pre-filled entry params.
     const params = new URLSearchParams();
-
-    for (const [key, value] of formData.entries()) {
-      params.append(key, value.toString());
+    for (const [key, value] of new FormData(e.currentTarget).entries()) {
+      const v = value.toString().trim();
+      if (v) params.append(key, v);
     }
 
-    try {
-      await fetch(GOOGLE_FORM_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: params.toString(),
-      });
-    } catch (err) {
-      console.error("Google form submission error:", err);
-    } finally {
-      setSubmitting(false);
-      setSubmitted(true);
+    const qs = params.toString();
+    const url = qs ? `${GOOGLE_FORM_URL}?${qs}` : GOOGLE_FORM_URL;
+
+    // Open the Google Form in a new tab so the Deploymo website stays open.
+    const newTab = window.open(url, "_blank", "noopener,noreferrer");
+    if (!newTab) {
+      // Popup blocked — navigate in the current tab so the visitor still reaches the form.
+      window.location.href = url;
+      return;
     }
+
+    setSubmitted(true);
   };
 
   return (
@@ -180,29 +177,29 @@ export default function ContactClient() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Your Name</label>
-                            <input required name="entry.177599544" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="Rajesh Sharma" />
+                            <input required name="entry.2089872754" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="Rajesh Sharma" />
                           </div>
                           <div>
                             <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Company / Agency Name</label>
-                            <input required name="entry.1501675554" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="Brand Activations Pvt Ltd" />
+                            <input required name="entry.2001493855" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="Brand Activations Pvt Ltd" />
                           </div>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Work Email</label>
-                            <input required name="entry.599577987" type="email" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="rajesh@agency.com" />
+                            <input required name="entry.1465623882" type="email" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="rajesh@agency.com" />
                           </div>
                           <div>
                             <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Phone / Mobile</label>
-                            <input required name="entry.117751479" type="tel" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="+91 98200 00000" />
+                            <input required name="entry.1558776332" type="tel" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="+91 98200 00000" />
                           </div>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Primary Manpower Category</label>
-                            <select required name="entry.2076661831" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading focus:outline-none focus:border-text-heading/30 transition-colors appearance-none">
+                            <select required name="entry.313293537" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading focus:outline-none focus:border-text-heading/30 transition-colors appearance-none">
                               <option value="" className="bg-bg-card">Select category...</option>
                               <option value="Brand Promoters" className="bg-bg-card">Brand Promoters</option>
                               <option value="Sales Promoters" className="bg-bg-card">Sales Promoters</option>
@@ -216,14 +213,14 @@ export default function ContactClient() {
                           </div>
                           <div>
                              <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Staff Count Required</label>
-                             <input required name="entry.4859723" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="e.g. 5 Promoters, 1 Supervisor" />
+                             <input required name="entry.92651475" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="e.g. 5 Promoters, 1 Supervisor" />
                           </div>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                              <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Location(s)</label>
-                             <select required name="entry.158642125" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading focus:outline-none focus:border-text-heading/30 transition-colors appearance-none">
+                             <select required name="entry.1116506501" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading focus:outline-none focus:border-text-heading/30 transition-colors appearance-none">
                                <option value="" className="bg-bg-card">Select region...</option>
                                <option value="Mumbai Metro (Andheri, BKC, Bandra, Powai, etc.)" className="bg-bg-card">Mumbai Metro (Andheri, BKC, Bandra, Powai, etc.)</option>
                                <option value="Navi Mumbai (Vashi, Nerul, Belapur, etc.)" className="bg-bg-card">Navi Mumbai (Vashi, Nerul, Belapur, etc.)</option>
@@ -233,20 +230,20 @@ export default function ContactClient() {
                           </div>
                           <div>
                              <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Campaign Duration / Dates</label>
-                             <input required name="entry.1369539899" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="e.g. 3 Days (Oct 15 - Oct 17)" />
+                             <input required name="entry.1950772776" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="e.g. 3 Days (Oct 15 - Oct 17)" />
                           </div>
                       </div>
 
                       <div className="space-y-4 pt-2">
                           <div>
                              <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Campaign Brief & Requirements</label>
-                             <textarea required name="entry.950539141" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors min-h-[80px]" placeholder="Describe the activation, target pitch, working hours, and profile requirements..."></textarea>
+                             <textarea required name="entry.461818634" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors min-h-[80px]" placeholder="Describe the activation, target pitch, working hours, and profile requirements..."></textarea>
                           </div>
                       </div>
 
                       <div className="pt-4">
-                         <button disabled={submitting} type="submit" className="w-full sm:w-auto px-8 py-3.5 bg-text-heading text-bg-page text-xs tracking-widest rounded-xl hover:opacity-90 transition-colors uppercase font-semibold cursor-pointer disabled:opacity-50">
-                           {submitting ? "Submitting..." : "Submit Quote Request"}
+                         <button type="submit" className="w-full sm:w-auto px-8 py-3.5 bg-text-heading text-bg-page text-xs tracking-widest rounded-xl hover:opacity-90 transition-colors uppercase font-semibold cursor-pointer disabled:opacity-50">
+                           Submit Quote Request
                          </button>
                       </div>
                    </form>
@@ -255,9 +252,9 @@ export default function ContactClient() {
                         <div className="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center mb-6">
                            <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
                         </div>
-                        <h3 className="text-xl font-light mb-2 text-text-heading">Quotation Inquiry Received</h3>
+                        <h3 className="text-xl font-light mb-2 text-text-heading">Quote Form Opened in a New Tab</h3>
                         <p className="text-sm text-text-body/70 max-w-sm leading-relaxed mb-6">
-                           Thank you for submitting your campaign requirements. Deploymo&apos;s Operations team will review your headcount &amp; timeline and send a proposal within 24 hours.
+                           Your details have been carried into our Google Form. Review them and tap Submit there to complete your request, and our Operations team will send a proposal within 24 hours. If the tab did not open, <a href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 text-text-heading hover:opacity-80 transition-opacity">open the quote form again</a>.
                         </p>
                         <a href="https://wa.me/message/4ZTBQI5MAZ6UP1" target="_blank" rel="noopener noreferrer" className="px-6 py-2.5 bg-emerald-600 text-white text-xs font-semibold uppercase tracking-widest rounded-xl hover:bg-emerald-700 transition-colors">
                           WhatsApp Fast-Track →
