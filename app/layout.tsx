@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono, IBM_Plex_Sans, Courier_Prime } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { GoogleAnalytics } from '@/components/google-analytics'
+import { FloatingWhatsAppButton } from '@/components/floating-whatsapp-button'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -252,6 +253,7 @@ export default function RootLayout({
       </head>
       <body className={`font-sans antialiased theme-transition`}>
         {children}
+        <FloatingWhatsAppButton />
         <Analytics />
         <GoogleAnalytics />
       </body>
