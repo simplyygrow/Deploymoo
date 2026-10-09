@@ -56,33 +56,43 @@ export default function ContactClient() {
   }
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  // Public responder (/viewform) link for the Deploymo quote-request Google Form.
-  // Only this public URL is used — the private /edit URL is never exposed.
-  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe-p2_9Cky7Ef2C-UZ19e-TvqesKPi8LkqarUnYo6K65C8Hhw/viewform";
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  // The form is submitted silently to our server-side API route (/api/contact),
+  // which forwards the data to the Google Form. The Google Form is never
+  // opened, embedded, or shown to visitors.
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (submitting) return; // block duplicate submissions while a request is in flight
 
-    // Carry the visitor's answers over to the Google Form via pre-filled entry params.
-    const params = new URLSearchParams();
-    for (const [key, value] of new FormData(e.currentTarget).entries()) {
-      const v = value.toString().trim();
-      if (v) params.append(key, v);
+    setSubmitting(true);
+    setError("");
+
+    try {
+      const payload = Object.fromEntries(new FormData(e.currentTarget).entries());
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => null);
+
+      if (res.ok && data?.ok) {
+        setSubmitted(true);
+      } else {
+        setError(
+          data?.error ||
+            "Something went wrong while submitting your request. Your details are still here — please try again."
+        );
+      }
+    } catch {
+      setError(
+        "We could not reach the server. Your details are still here — please check your connection and try again."
+      );
+    } finally {
+      setSubmitting(false);
     }
-
-    const qs = params.toString();
-    const url = qs ? `${GOOGLE_FORM_URL}?${qs}` : GOOGLE_FORM_URL;
-
-    // Open the Google Form in a new tab so the Deploymo website stays open.
-    const newTab = window.open(url, "_blank", "noopener,noreferrer");
-    if (!newTab) {
-      // Popup blocked — navigate in the current tab so the visitor still reaches the form.
-      window.location.href = url;
-      return;
-    }
-
-    setSubmitted(true);
   };
 
   return (
@@ -177,29 +187,29 @@ export default function ContactClient() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Your Name</label>
-                            <input required name="entry.2089872754" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="Rajesh Sharma" />
+                            <input required name="name" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="Rajesh Sharma" />
                           </div>
                           <div>
                             <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Company / Agency Name</label>
-                            <input required name="entry.2001493855" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="Brand Activations Pvt Ltd" />
+                            <input required name="company" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="Brand Activations Pvt Ltd" />
                           </div>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Work Email</label>
-                            <input required name="entry.1465623882" type="email" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="rajesh@agency.com" />
+                            <input required name="email" type="email" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="rajesh@agency.com" />
                           </div>
                           <div>
                             <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Phone / Mobile</label>
-                            <input required name="entry.1558776332" type="tel" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="+91 98200 00000" />
+                            <input required name="phone" type="tel" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="+91 98200 00000" />
                           </div>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Primary Manpower Category</label>
-                            <select required name="entry.313293537" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading focus:outline-none focus:border-text-heading/30 transition-colors appearance-none">
+                            <select required name="category" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading focus:outline-none focus:border-text-heading/30 transition-colors appearance-none">
                               <option value="" className="bg-bg-card">Select category...</option>
                               <option value="Brand Promoters" className="bg-bg-card">Brand Promoters</option>
                               <option value="Sales Promoters" className="bg-bg-card">Sales Promoters</option>
@@ -213,14 +223,14 @@ export default function ContactClient() {
                           </div>
                           <div>
                              <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Staff Count Required</label>
-                             <input required name="entry.92651475" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="e.g. 5 Promoters, 1 Supervisor" />
+                             <input required name="headcount" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="e.g. 5 Promoters, 1 Supervisor" />
                           </div>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                              <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Location(s)</label>
-                             <select required name="entry.1116506501" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading focus:outline-none focus:border-text-heading/30 transition-colors appearance-none">
+                             <select required name="location" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading focus:outline-none focus:border-text-heading/30 transition-colors appearance-none">
                                <option value="" className="bg-bg-card">Select region...</option>
                                <option value="Mumbai Metro (Andheri, BKC, Bandra, Powai, etc.)" className="bg-bg-card">Mumbai Metro (Andheri, BKC, Bandra, Powai, etc.)</option>
                                <option value="Navi Mumbai (Vashi, Nerul, Belapur, etc.)" className="bg-bg-card">Navi Mumbai (Vashi, Nerul, Belapur, etc.)</option>
@@ -230,35 +240,41 @@ export default function ContactClient() {
                           </div>
                           <div>
                              <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Campaign Duration / Dates</label>
-                             <input required name="entry.1950772776" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="e.g. 3 Days (Oct 15 - Oct 17)" />
+                             <input required name="duration" type="text" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors" placeholder="e.g. 3 Days (Oct 15 - Oct 17)" />
                           </div>
                       </div>
 
                       <div className="space-y-4 pt-2">
                           <div>
                              <label className="block text-[11px] uppercase tracking-widest text-text-muted/70 mb-2 font-mono">Campaign Brief & Requirements</label>
-                             <textarea required name="entry.461818634" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors min-h-[80px]" placeholder="Describe the activation, target pitch, working hours, and profile requirements..."></textarea>
+                             <textarea required name="brief" className="w-full bg-bg-page border border-border-custom rounded-xl px-4 py-3 text-sm text-text-heading placeholder:text-text-muted/65 focus:outline-none focus:border-text-heading/30 transition-colors min-h-[80px]" placeholder="Describe the activation, target pitch, working hours, and profile requirements..."></textarea>
                           </div>
                       </div>
 
                       <div className="pt-4">
-                         <button type="submit" className="w-full sm:w-auto px-8 py-3.5 bg-text-heading text-bg-page text-xs tracking-widest rounded-xl hover:opacity-90 transition-colors uppercase font-semibold cursor-pointer disabled:opacity-50">
-                           Submit Quote Request
+                         <button disabled={submitting} type="submit" className="w-full sm:w-auto px-8 py-3.5 bg-text-heading text-bg-page text-xs tracking-widest rounded-xl hover:opacity-90 transition-colors uppercase font-semibold cursor-pointer disabled:opacity-50">
+                           {submitting ? "Submitting..." : "Submit Quote Request"}
                          </button>
+                         {error && (
+                           <p role="alert" className="mt-3 text-xs text-red-400 leading-relaxed">{error}</p>
+                         )}
                       </div>
                    </form>
                  ) : (
                     <div className="flex flex-col items-center justify-center py-20 text-center">
                         <div className="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center mb-6">
-                           <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
+                           <svg className="w-7 h-7 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
                         </div>
-                        <h3 className="text-xl font-light mb-2 text-text-heading">Quote Form Opened in a New Tab</h3>
+                        <h3 className="text-xl font-light mb-2 text-text-heading">Thank you for submitting this form.</h3>
                         <p className="text-sm text-text-body/70 max-w-sm leading-relaxed mb-6">
-                           Your details have been carried into our Google Form. Review them and tap Submit there to complete your request, and our Operations team will send a proposal within 24 hours. If the tab did not open, <a href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 text-text-heading hover:opacity-80 transition-opacity">open the quote form again</a>.
+                           Our team has received your requirements and will get back to you shortly.
                         </p>
                         <a href="https://wa.me/message/4ZTBQI5MAZ6UP1" target="_blank" rel="noopener noreferrer" className="px-6 py-2.5 bg-emerald-600 text-white text-xs font-semibold uppercase tracking-widest rounded-xl hover:bg-emerald-700 transition-colors">
                           WhatsApp Fast-Track →
                         </a>
+                        <button type="button" onClick={() => { setSubmitted(false); setError(""); }} className="mt-5 text-xs text-text-muted underline underline-offset-4 hover:text-text-heading transition-colors cursor-pointer">
+                          Submit another request
+                        </button>
                     </div>
                  )}
                </BentoCard>
