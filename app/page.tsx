@@ -157,7 +157,7 @@ export default function DeploymoHomePage() {
 
           <div className="flex gap-8 sm:gap-12 pt-6 border-t border-border-custom/50">
             {[
-              { value: "150+", label: "Field Staff Deployed" },
+              { value: "10K+", label: "Field Staff Deployed" },
               { value: "100%", label: "Punctuality Guarantee" },
               { value: "3 Regions", label: "Mumbai • Navi Mumbai • Thane" },
             ].map((stat, i) => (
