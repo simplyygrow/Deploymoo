@@ -43,7 +43,7 @@ const faqSchema = {
       "name": "How can I request a quote for an upcoming event or campaign?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You can submit an inquiry through our website contact form or directly message our team on WhatsApp at +91 6261652749 for immediate quotation."
+        "text": "You can submit an inquiry through our website contact form or directly message our team on WhatsApp at +91 8982652749 for immediate quotation."
       }
     }
   ]

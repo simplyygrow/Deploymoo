@@ -97,7 +97,7 @@ export default function ServicesClient() {
     { q: "Do you supply permanent staff or security personnel?", a: "No. Deploymo is exclusively a B2B Promotional Manpower & Event Staffing agency. We focus strictly on temporary, project-based promotional and event workforce deployment." },
     { q: "How are promoters screened and trained?", a: "Our staff are screened for communication, language proficiency (English, Hindi, Marathi), grooming, and punctual reporting before being briefed on client-specific product scripts." },
     { q: "What is your lead time for deploying field teams?", a: "We can fulfill requirements within 24 to 48 hours for standard campaign setups depending on headcount and location." },
-    { q: "How can I request a quote for my campaign?", a: "Fill out our online contact form or message our team directly via WhatsApp (+91 6261652749) with your dates, headcount, and location requirements." }
+    { q: "How can I request a quote for my campaign?", a: "Fill out our online contact form or message our team directly via WhatsApp (+91 8982652749) with your dates, headcount, and location requirements." }
   ];
 
   return (

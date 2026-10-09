@@ -128,7 +128,7 @@ const jsonLdSchema = {
       },
       "image": "https://www.deploymo.com/images/home-hero.jpeg",
       "email": "info@deploymo.com",
-      "telephone": "+91-6261652749",
+      "telephone": "+91-8982652749",
       "description": "B2B Promotional Manpower & Event Staffing Agency in Mumbai, Navi Mumbai, and Thane. We deploy trained brand promoters, sales promoters, hostesses, exhibition staff, and event manpower.",
       "foundingDate": "2023",
       "numberOfEmployees": {
@@ -164,7 +164,7 @@ const jsonLdSchema = {
       "name": "Deploymo Promotional Manpower & Event Staffing",
       "image": "https://www.deploymo.com/images/home-hero.jpeg",
       "url": "https://www.deploymo.com",
-      "telephone": "+91-6261652749",
+      "telephone": "+91-8982652749",
       "email": "info@deploymo.com",
       "priceRange": "₹₹",
       "currenciesAccepted": "INR",

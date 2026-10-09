@@ -50,8 +50,8 @@ export function SharedFooter() {
             <a href="mailto:info@deploymo.com" className="text-text-body/80 hover:text-text-heading transition-colors">
               info@deploymo.com
             </a>
-            <a href="tel:+916261652749" className="text-text-body/80 hover:text-text-heading transition-colors">
-              +91 6261652749
+            <a href="tel:+918982652749" className="text-text-body/80 hover:text-text-heading transition-colors">
+              +91 8982652749
             </a>
           </div>
         </div>

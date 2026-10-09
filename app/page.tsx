@@ -423,7 +423,7 @@ export default function DeploymoHomePage() {
               },
               {
                 q: "How can I request a quote for an upcoming event or campaign?",
-                a: "You can submit an inquiry through our website contact form or directly message our team on WhatsApp at +91 6261652749 for immediate quotation."
+                a: "You can submit an inquiry through our website contact form or directly message our team on WhatsApp at +91 8982652749 for immediate quotation."
               }
             ].map((faq, index) => (
               <div key={index} className="p-6 rounded-2xl border border-border-custom bg-bg-card space-y-2">
