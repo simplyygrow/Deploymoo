@@ -185,13 +185,13 @@ export function LiveAgentFeed() {
 }
 
 export function LiveAgentCounter() {
-  const [count, setCount] = useState(150)
+  const [count, setCount] = useState(10126)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
     const t = setInterval(() => {
-      setCount(v => Math.max(120, v + Math.floor(Math.random() * 3 - 1)))
+      setCount(v => Math.max(10096, v + Math.floor(Math.random() * 3 - 1)))
     }, 2000)
     return () => clearInterval(t)
   }, [])
@@ -206,7 +206,7 @@ export function LiveAgentCounter() {
       letterSpacing: "-0.02em",
       transition: "color 0.3s ease",
     }}>
-      {mounted ? count.toString() : "150"}+
+      {mounted ? count.toLocaleString("en-IN") : "10,126"}+
     </span>
   )
 }
