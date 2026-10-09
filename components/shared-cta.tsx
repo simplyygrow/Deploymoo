@@ -8,7 +8,7 @@ export function SharedCta({ actionType = 'contact' }: { actionType?: 'email' | '
     <section className="relative py-16 px-6 md:py-32 md:px-12 lg:px-20 border-t border-border-custom overflow-hidden">
       {/* Background graphic */}
       <img
-        src="/images/footer.png"
+        src="/images/footer.jpg"
         alt=""
         aria-hidden="true"
         className="absolute bottom-0 left-0 w-full object-cover object-bottom pointer-events-none select-none opacity-85 dark:opacity-50"

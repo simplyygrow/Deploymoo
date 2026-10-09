@@ -84,7 +84,7 @@ export default function AboutClient() {
       {/* Hero */}
       <div className="pt-40 pb-16 px-6 md:px-12 lg:px-20 max-w-6xl mx-auto">
         <Tag>ABOUT DEPLOYMO</Tag>
-        <RevealText className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] text-text-heading">
+        <RevealText as="h1" className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] text-text-heading">
           {"Mumbai's Specialized Promotional\n& Event Staffing Partner"}
         </RevealText>
       </div>
@@ -99,11 +99,55 @@ export default function AboutClient() {
               <p className="text-sm md:text-base text-text-body/70 leading-relaxed mb-6">
                 We supply brand promoters, sales promoters, event hostesses, product sampling staff, registration teams, and field supervisors for marketing activations, exhibitions, mall campaigns, and corporate events.
               </p>
+              <p className="text-sm md:text-base text-text-body/70 leading-relaxed mb-6">
+                Founded to solve one practical problem — getting reliable, well-groomed staff to the right location on time — Deploymo has become a trusted B2B manpower partner for brands, marketing agencies, and event organisers across the Mumbai metropolitan region. Our teams work daily across Mumbai, Navi Mumbai, and Thane, covering shopping malls, corporate venues, exhibition centres, and high-street retail.
+              </p>
+              <p className="text-sm md:text-base text-text-body/70 leading-relaxed mb-6">
+                Unlike a recruitment agency, we never place permanent employees. Every engagement is project-based: a product launch in BKC, a sampling drive in Thane, or a trade-show delegation at a Mumbai convention centre. That focus lets us maintain a deep, verified talent pool of promotional staff who are screened for communication skills, fluent in English, Hindi, and Marathi, briefed on your product script, and deployment-ready within 24 to 48 hours.
+              </p>
               <div className="p-4 rounded-xl border border-amber-500/20 bg-amber-500/5 text-xs text-text-body/80 leading-relaxed">
                 <strong className="text-amber-600 dark:text-amber-400 font-semibold block mb-1">Agency Focus Note:</strong>
                 Deploymo operates exclusively in promotional manpower and event staffing. We do not provide permanent HR recruitment, corporate office placements, or security guard services.
               </div>
             </BentoCard>
+        </div>
+      </section>
+
+      {/* Service Expertise */}
+      <section className="py-16 px-6 md:py-24 md:px-12 lg:px-20 border-t border-border-custom">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <Tag>WHAT WE DEPLOY</Tag>
+            <h2 className="mt-5 text-2xl md:text-4xl font-light tracking-tight leading-[1.05] text-text-heading">
+              Promotional Staffing & Event Staffing Expertise
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-6 rounded-2xl border border-border-custom bg-bg-card">
+              <h3 className="text-xl font-light mb-3 text-text-heading">Brand Promoters & Sales Promoters</h3>
+              <p className="text-sm text-text-body/75 leading-relaxed">
+                Our brand promoters represent your brand at product launches, retail activations, and mall campaigns across Mumbai. Sales promoters are trained for in-store pitching, footfall conversion, and product trials, while sampling teams execute society and street-level trial campaigns with supervised reporting.
+              </p>
+            </div>
+            <div className="p-6 rounded-2xl border border-border-custom bg-bg-card">
+              <h3 className="text-xl font-light mb-3 text-text-heading">Event Hostesses & Exhibition Staff</h3>
+              <p className="text-sm text-text-body/75 leading-relaxed">
+                Professional hostesses, registration coordinators, and ushers handle guest flow at conferences, B2B expos, and corporate events in Mumbai and Thane. Exhibition staff support stall operations, lead capture, and visitor engagement throughout multi-day trade shows.
+              </p>
+            </div>
+            <div className="p-6 rounded-2xl border border-border-custom bg-bg-card">
+              <h3 className="text-xl font-light mb-3 text-text-heading">Field Supervisors & Team Leaders</h3>
+              <p className="text-sm text-text-body/75 leading-relaxed">
+                Every deployment includes experienced supervisors who manage attendance, briefing, dress-code compliance, and campaign KPIs on-site — giving marketing managers a single point of accountability across multiple locations in Mumbai, Navi Mumbai, and Thane.
+              </p>
+            </div>
+            <div className="p-6 rounded-2xl border border-border-custom bg-bg-card">
+              <h3 className="text-xl font-light mb-3 text-text-heading">Retail Audits & Mystery Shopping</h3>
+              <p className="text-sm text-text-body/75 leading-relaxed">
+                Discreet mystery shoppers and audit staff measure product placement, shelf compliance, and store pitch for retail chains and franchise owners. Standardised formats and photo evidence make it easy to compare performance across stores in the Mumbai region.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

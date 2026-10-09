@@ -24,6 +24,8 @@ export function SharedFooter() {
               { label: "Services", href: "/services" },
               { label: "About",    href: "/about" },
               { label: "Contact",  href: "/contact" },
+              { label: "FAQ",      href: "/faq" },
+              { label: "Blog",     href: "/blog/how-deploymo-enhances-btl-events" },
             ].map(l => (
               <Link key={l.label} href={l.href} className="text-xs text-text-body/75 hover:text-text-heading transition-colors tracking-wide">{l.label}</Link>
             ))}

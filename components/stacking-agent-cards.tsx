@@ -9,6 +9,7 @@ const STAFFING_CATEGORIES = [
     desc: "Articulate, trained brand ambassadors and promoters who represent your brand vision during activations, product launches, and high-visibility campaigns.",
     stats: [{ v: "Mumbai Wide", l: "coverage" }, { v: "Short / Long Term", l: "contracts" }],
     img: "/images/category-brand-promoters.jpeg",
+    alt: "Deploymo brand promoters Mumbai at a product launch activation",
   },
   {
     label: "SALES & RETAIL PROMOTERS",
@@ -16,6 +17,7 @@ const STAFFING_CATEGORIES = [
     desc: "Active sales promoters deployed across modern trade, retail outlets, and malls to drive footfall conversion and boost product trials.",
     stats: [{ v: "Trained", l: "pitching" }, { v: "High Impact", l: "conversions" }],
     img: "/images/category-sales-promoters.jpeg",
+    alt: "Sales promoters and in-store promoters at a Mumbai retail outlet",
   },
   {
     label: "SAMPLING & FIELD EXEC",
@@ -23,6 +25,7 @@ const STAFFING_CATEGORIES = [
     desc: "Dynamic teams for product sampling, society activations, mall promotions, and roadshows targeting key consumer segments.",
     stats: [{ v: "Rapid", l: "deployment" }, { v: "Supervised", l: "execution" }],
     img: "/images/category-sampling-staff.jpeg",
+    alt: "Product sampling staff running a trial campaign in Mumbai",
   },
   {
     label: "EVENT & EXHIBITION",
@@ -30,6 +33,7 @@ const STAFFING_CATEGORIES = [
     desc: "Professional hostesses, registration coordinators, ushers, exhibition promoters, and team leaders for corporate events and trade shows.",
     stats: [{ v: "Professional", l: "grooming" }, { v: "Turnkey", l: "coordination" }],
     img: "/images/category-event-hostesses.jpeg",
+    alt: "Event hostesses and registration staff at a Mumbai exhibition",
   },
 ]
 
@@ -101,7 +105,7 @@ export function StackingAgentCards() {
                   <div className="relative w-full h-52 pointer-events-none md:hidden">
                     <img
                       src={cat.img}
-                      alt={cat.label}
+                      alt={cat.alt}
                       className="absolute inset-0 w-full h-full object-cover object-center opacity-70"
                       style={{
                         maskImage: "linear-gradient(to bottom, black 0%, black 35%, transparent 85%)",
@@ -116,7 +120,7 @@ export function StackingAgentCards() {
                   <div className="hidden md:block absolute inset-y-0 right-0 w-1/2 pointer-events-none">
                     <img
                       src={cat.img}
-                      alt={cat.label}
+                      alt={cat.alt}
                       className="w-full h-full object-cover object-center opacity-70"
                     />
                     <div

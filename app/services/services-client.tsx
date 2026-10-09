@@ -61,31 +61,31 @@ export default function ServicesClient() {
   const serviceCategories = [
     {
       title: "Brand & Sales Promoters",
-      desc: "Trained, well-groomed promoters for product launches, brand awareness campaigns, and sales conversions.",
+      desc: "Trained, well-groomed promoters for product launches, brand awareness campaigns, and sales conversions. Deployed at malls, retail chains, and high-street activations across Mumbai, Navi Mumbai, and Thane.",
       services: ["Brand Promoters", "Sales Promoters", "In-Store Promoters", "Mall Promoters"],
       who: "FMCG, Consumer Electronics, and Retail Brands."
     },
     {
       title: "Product Sampling & Distribution",
-      desc: "Energetic field staff for direct consumer sampling, leaflet distribution, and trial campaigns.",
+      desc: "Energetic field staff for direct consumer sampling, leaflet distribution, and trial campaigns. Ideal for FMCG launches and society sampling drives across the Mumbai metropolitan region.",
       services: ["Product Sampling Staff", "Flier Distribution Staff", "Roadshow Staff"],
       who: "Beverage, Snacks, Beauty, and D2C Brands."
     },
     {
       title: "Event & Exhibition Staffing",
-      desc: "Professional hostesses, registration executives, ushers, and exhibition staff for B2B expos.",
+      desc: "Professional hostesses, registration executives, ushers, and exhibition staff for B2B expos. Supplied for conferences, trade shows, and corporate events throughout Mumbai and Thane.",
       services: ["Event Hostesses", "Exhibition Staff", "Registration Staff", "Ushering Staff"],
       who: "Event Organizers, Corporate Agencies, and Trade Shows."
     },
     {
       title: "Field Operations & Supervision",
-      desc: "Experienced supervisors and team leaders to manage attendance, briefing, and campaign KPIs.",
+      desc: "Experienced supervisors and team leaders to manage attendance, briefing, and campaign KPIs. A single point of accountability for multi-location campaigns across the tri-region.",
       services: ["Field Supervisors", "Team Leaders"],
       who: "Marketing Agencies and Multi-Location Campaign Managers."
     },
     {
       title: "Retail Compliance & Audits",
-      desc: "Discreet mystery shoppers and audit staff to measure product placement, store pitch, and compliance.",
+      desc: "Discreet mystery shoppers and audit staff to measure product placement, store pitch, and compliance. Standardised audit formats for retail chains operating in Mumbai, Navi Mumbai, and Thane.",
       services: ["Mystery Shoppers", "Audit Staff"],
       who: "Franchise Owners, Retail Chains, and Quality Assurance Teams."
     }
@@ -107,13 +107,33 @@ export default function ServicesClient() {
       {/* Hero Section */}
       <div className="pt-40 pb-16 px-6 md:px-12 lg:px-20 max-w-6xl mx-auto">
         <Tag>PROMOTIONAL SERVICES</Tag>
-        <RevealText className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] text-text-heading">
-          {"B2B Promotional Manpower\n& Event Staffing Solutions"}
+        <RevealText as="h1" className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] text-text-heading">
+          {"Promotional Manpower &\nEvent Staffing Services in Mumbai"}
         </RevealText>
         <p className="mt-6 text-base text-text-body/70 max-w-2xl leading-relaxed">
           Deploymo provides trained field staff and event manpower for brand activations, trade expos, retail promotions, and product sampling across Mumbai, Navi Mumbai, and Thane.
         </p>
       </div>
+
+      {/* Service Area Coverage */}
+      <section className="py-12 px-6 md:py-16 md:px-12 lg:px-20 border-t border-border-custom">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+          <div>
+            <Tag>COVERAGE</Tag>
+            <h2 className="mt-5 text-2xl md:text-4xl font-light tracking-tight leading-[1.05] text-text-heading">
+              Event Staffing Services in Mumbai, Navi Mumbai & Thane
+            </h2>
+          </div>
+          <div className="space-y-4 text-sm text-text-body/75 leading-relaxed">
+            <p>
+              Deploymo supplies promotional manpower and event staffing across the Mumbai metropolitan region. In Mumbai, our teams cover Andheri, Bandra, BKC, Powai, Lower Parel, Goregaon, Borivali, and Malad for mall activations, product launches, and exhibitions. In Navi Mumbai we operate across Vashi, Nerul, and Airoli, while Thane coverage focuses on Thane West and its retail corridors.
+            </p>
+            <p>
+              Because we maintain local manpower pools in each region, brand promoters, sales promoters, event hostesses, registration teams, and field supervisors can be deployed within 24 to 48 hours — with local language fluency in English, Hindi, and Marathi and a Deploymo team leader supervising every on-ground campaign.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* 15 Core Services Grid */}
       <section className="py-12 px-6 md:py-16 md:px-12 lg:px-20 border-t border-border-custom">

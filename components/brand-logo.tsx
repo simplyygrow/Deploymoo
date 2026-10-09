@@ -20,7 +20,7 @@ export function BrandLogo({ className = "", showText = true, onClick }: BrandLog
       {/* Logo Mark Image */}
       <img 
         src="/logo.png" 
-        alt="DEPLOYMO Logo" 
+        alt="Deploymo logo — B2B promotional staffing and event staffing agency" 
         className="w-7 h-7 flex-shrink-0 object-contain transition-transform duration-300 group-hover:scale-105" 
       />
 

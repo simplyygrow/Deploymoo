@@ -95,8 +95,8 @@ export default function ContactClient() {
       {/* Hero Section */}
       <div className="pt-40 pb-16 px-6 md:px-12 lg:px-20 max-w-6xl mx-auto">
         <Tag>CONTACT DEPLOYMO</Tag>
-        <RevealText className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] text-text-heading">
-          {"Get a Promotional Staffing\n& Manpower Quotation."}
+        <RevealText as="h1" className="mt-5 text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] text-text-heading">
+          {"Get a Promotional Staffing\n& Manpower Quote in Mumbai."}
         </RevealText>
         <p className="mt-6 text-base text-text-body/70 max-w-2xl leading-relaxed">
           Share your campaign dates, location (Mumbai, Navi Mumbai, Thane), and headcount requirements. Our deployment team will provide a transparent proposal within 24 hours.
@@ -148,6 +148,25 @@ export default function ContactClient() {
                   <a href="https://wa.me/message/4ZTBQI5MAZ6UP1" target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-text-heading hover:text-emerald-500 transition-colors underline underline-offset-4">WhatsApp Direct →</a>
                   <a href="https://www.instagram.com/deploy.mo" target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-text-heading hover:text-emerald-500 transition-colors underline underline-offset-4">Instagram</a>
                   <a href="https://www.linkedin.com/company/workneed/" target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-text-heading hover:text-emerald-500 transition-colors underline underline-offset-4">LinkedIn</a>
+                </div>
+              </BentoCard>
+
+              <BentoCard className="p-6 md:p-8" delay={240}>
+                <div className="text-xs font-mono text-text-muted tracking-widest uppercase mb-4">LOCATE US — MUMBAI OFFICE</div>
+                <div className="overflow-hidden rounded-xl border border-border-custom">
+                  <iframe
+                    title="Deploymo office location map — Andheri West, Mumbai"
+                    src="https://www.google.com/maps?q=Off%20Juhu%20Circle%2C%20New%20Link%20Road%2C%20Opp.%20The%20Club%2C%20New%20D.N.%20Nagar%2C%20Andheri%20West%2C%20Mumbai%20400053%2C%20India&output=embed"
+                    className="w-full h-56 border-0"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
+                  />
+                </div>
+                <div className="mt-4 text-sm text-text-body/80 leading-relaxed">
+                  <div className="font-medium text-text-heading">Deploymo</div>
+                  Off Juhu Circle, New Link Road, Opp. The Club, New D.N. Nagar, Andheri West, Mumbai, Maharashtra 400053, India
+                  <div className="mt-1"><a href="tel:+918982652749" className="hover:text-text-heading transition-colors">+91 8982652749</a></div>
                 </div>
               </BentoCard>
             </div>
@@ -247,6 +266,29 @@ export default function ContactClient() {
                  )}
                </BentoCard>
             </div>
+        </div>
+      </section>
+
+      {/* Quote Guidance Content */}
+      <section className="py-12 px-6 md:py-16 md:px-12 lg:px-20 border-t border-border-custom">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-8">
+            <div className="text-xs font-mono text-text-muted tracking-widest uppercase mb-4">QUOTE GUIDANCE</div>
+            <h2 className="text-2xl md:text-3xl font-light text-text-heading mb-6">
+              Get a Promotional Staffing Quote for Mumbai, Navi Mumbai & Thane
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-text-body/75 leading-relaxed">
+            <p>
+              Deploymo&apos;s deployment team responds to every enquiry within 24 hours with a transparent, all-inclusive quotation. To price your campaign accurately, share your campaign dates, venue or area (for example Andheri, BKC, Vashi, or Thane West), headcount, and the staff profile you need — brand promoters, sales promoters, product sampling staff, event hostesses, registration teams, or field supervisors. Multi-location activations across Mumbai, Navi Mumbai, and Thane are quoted as one coordinated deployment, with a single point of accountability for your campaign.
+            </p>
+            <p>
+              You can reach us through the quote request form above, by email at info@deploymo.com, or directly on WhatsApp at +91 8982652749 for urgent requirements. Our corporate and operations office in Andheri West handles daily deployments across the Mumbai metropolitan region, while our registered head office supports contracts and administration. Standard lead time is 24 to 48 hours from brief confirmation, and every deployment includes a Deploymo team leader supervising attendance, grooming, and on-ground performance.
+            </p>
+            <p className="md:col-span-2">
+              Deploymo is a B2B promotional manpower and event staffing agency — we do not handle permanent recruitment, security staffing, or office administration requests. Our services cover brand promoters, sales promoters, event hostesses, exhibition staff, registration teams, ushers, sampling staff, roadshow teams, field supervisors, team leaders, mystery shoppers, and audit staff for corporate activations, retail campaigns, mall promotions, and trade shows. Browse the full list on our <a href="/services" className="underline underline-offset-4 text-text-heading hover:opacity-80 transition-opacity">services page</a> or read the <a href="/faq" className="underline underline-offset-4 text-text-heading hover:opacity-80 transition-opacity">frequently asked questions</a>.
+            </p>
+          </div>
         </div>
       </section>
 

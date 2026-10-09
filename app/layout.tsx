@@ -12,8 +12,8 @@ const _courierPrime = Courier_Prime({ weight: ["400", "700"], subsets: ["latin"]
 const _ibmPlexSans = IBM_Plex_Sans({ weight: ["300", "400", "500", "600"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Promotional Manpower & Event Staffing Agency Mumbai | Deploymo',
-  description: 'Deploymo provides trained promotional manpower, brand promoters, sales promoters, hostesses, registration staff and exhibition staff across Mumbai, Navi Mumbai, and Thane. Request a deployment quote today.',
+  title: 'Deploymo | Promotional Staffing & Event Staffing Agency',
+  description: 'B2B promotional manpower and event staffing agency in Mumbai, Navi Mumbai & Thane. Trained promoters, hostesses and field staff. Request a quote.',
   keywords: [
     'Promotional Manpower Mumbai',
     'Promotional Staffing Mumbai',
@@ -67,8 +67,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Promotional Manpower & Event Staffing Agency Mumbai | Deploymo',
-    description: 'Deploy trained promoters, brand ambassadors, hostesses, exhibition staff and event professionals quickly across Mumbai, Navi Mumbai, and Thane.',
+    title: 'Deploymo | Promotional Staffing & Event Staffing Agency',
+    description: 'B2B promotional manpower and event staffing agency in Mumbai, Navi Mumbai & Thane. Trained promoters, hostesses and field staff.',
     type: 'website',
     url: 'https://www.deploymo.com',
     siteName: 'Deploymo',

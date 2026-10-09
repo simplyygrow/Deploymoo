@@ -1,16 +1,16 @@
 import ContactClient from "./contact-client"
 
 export const metadata = {
-  title: 'Contact Deploymo | Request a Deployment Quote for Promotional Staff',
-  description: 'Get in touch with Deploymo to discuss your promotional manpower, event staffing, or brand activation project in Mumbai, Navi Mumbai, and Thane. Request a free quote today.',
+  title: 'Contact Deploymo | Promotional Staffing Quote Mumbai',
+  description: 'Request a promotional staffing quote from Deploymo — event staff, promoters & hostesses for Mumbai, Navi Mumbai & Thane. Reply within 24 hours.',
   alternates: {
     canonical: '/contact',
   },
   openGraph: {
-    title: 'Contact Deploymo | Request a Deployment Quote',
-    description: 'Get in touch with Deploymo to discuss your field marketing, promoter, event staffing or brand activation project in Mumbai.',
+    title: 'Contact Deploymo | Promotional Staffing Quote Mumbai',
+    description: 'Request a promotional staffing quote from Deploymo — event staff, promoters & hostesses for Mumbai, Navi Mumbai & Thane.',
     url: 'https://www.deploymo.com/contact',
-    images: [{ url: 'https://www.deploymo.com/images/home-hero.jpeg', width: 1200, height: 630, alt: 'Contact Deploymo' }],
+    images: [{ url: 'https://www.deploymo.com/images/home-hero.jpeg', width: 1200, height: 630, alt: 'Contact Deploymo — promotional staffing Mumbai' }],
   },
 }
 
